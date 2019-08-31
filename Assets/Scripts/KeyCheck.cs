@@ -6,13 +6,16 @@ public class KeyCheck : MonoBehaviour
 {
     public Animation door;
 
-    // Update is called once per frame
+    public GameObject player;
+
     void OnTriggerStay()
     {
         
         if (Input.GetButton("Interact"))
         {
-            door.Play();
+            //if (player.GetComponentInChildren<Item>()) {
+                door.Play();
+            //}
         }
 
     }
