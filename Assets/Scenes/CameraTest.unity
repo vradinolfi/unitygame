@@ -59580,6 +59580,7 @@ GameObject:
   - component: {fileID: 1168799601}
   - component: {fileID: 1168799600}
   - component: {fileID: 1168799599}
+  - component: {fileID: 1168799604}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Enemy
@@ -59674,6 +59675,25 @@ Transform:
   m_Father: {fileID: 921693259}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1168799604
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168799598}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b709fb10407bb734cb7dfbd43eb4a6c7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1171329386
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92903,6 +92923,38 @@ PrefabInstance:
       propertyPath: m_ReceiveShadows
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 400052, guid: d63b2869ecd6ee449a5087fc4bcc4254, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400052, guid: d63b2869ecd6ee449a5087fc4bcc4254, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.000000029802322
+      objectReference: {fileID: 0}
+    - target: {fileID: 400052, guid: d63b2869ecd6ee449a5087fc4bcc4254, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400052, guid: d63b2869ecd6ee449a5087fc4bcc4254, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 400052, guid: d63b2869ecd6ee449a5087fc4bcc4254, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400056, guid: d63b2869ecd6ee449a5087fc4bcc4254, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.000000003725293
+      objectReference: {fileID: 0}
+    - target: {fileID: 400056, guid: d63b2869ecd6ee449a5087fc4bcc4254, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.000000064448834
+      objectReference: {fileID: 0}
+    - target: {fileID: 400056, guid: d63b2869ecd6ee449a5087fc4bcc4254, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.00000002217429
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d63b2869ecd6ee449a5087fc4bcc4254, type: 3}
 --- !u!1 &2107308162 stripped
@@ -93120,7 +93172,7 @@ MonoBehaviour:
   maxHealth: 200
   poisonRate: 0.5
   isPoisoned: 0
-  rayDistance: 4
+  rayDistance: 8
 --- !u!1001 &2108446160
 PrefabInstance:
   m_ObjectHideFlags: 0

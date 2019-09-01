@@ -37,7 +37,7 @@ public class PickupItem : MonoBehaviour
         {
             if (!paused && interactable)
             {
-                playerScript.GetComponent<Animator>().SetBool("isCrouching", true);
+                playerScript.GetComponent<Animator>().SetBool("IsCrouching", true);
                 paused = true;
                 pickUpText.gameObject.SetActive(true);
                 Time.timeScale = 0f;
@@ -46,7 +46,7 @@ public class PickupItem : MonoBehaviour
             {
                 if (interactable)
                 {
-                    playerScript.GetComponent<Animator>().SetBool("isCrouching", false);
+                    playerScript.GetComponent<Animator>().SetBool("IsCrouching", false);
                     paused = false;
                     pickUpText.gameObject.SetActive(false);
                     Time.timeScale = 1f;

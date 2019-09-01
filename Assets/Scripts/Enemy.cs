@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
     public void Die()
     {
         dead = true;
+        this.gameObject.SetActive(false);
         print("Enemy died.");
     }
 }

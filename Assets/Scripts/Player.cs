@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
     Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
     CapsuleCollider[] colliders;
     CapsuleCollider playerCollider;
+    PlayerControls controls;
     int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
 
     //private GameObject enemy;
@@ -31,6 +33,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        controls = new PlayerControls();
         // Create a layer mask for the floor layer.
         floorMask = LayerMask.GetMask("Floor");
 
@@ -132,9 +135,38 @@ public class Player : MonoBehaviour
             health -= poisonRate * Time.deltaTime;
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Aim"))
         {
+            anim.SetBool("IsAiming", true);
             //enemyScript.enemyHealth -= 25f;
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.distance < rayDistance)
+                {
+                    //print("We hit something");
+                    if (hit.collider.gameObject.tag == "Enemy")
+                    {
+                        print("Enemy locked");
+                        //turnSpeed = 0;
+
+                        Vector3 targetPostition = new Vector3(hit.transform.position.x,
+                                        this.transform.position.y,
+                                        hit.transform.position.z);
+                        transform.LookAt(targetPostition);
+
+                        if (Input.GetButtonDown("Interact"))
+                        {
+                            enemyScript = hit.collider.gameObject.GetComponent<Enemy>();
+                            enemyScript.enemyHealth -= 25;
+                            print("Shot fired!");
+                        }
+
+                    }
+                }
+            }
+        } else
+        {
+            anim.SetBool("IsAiming", false);
         }
 
     }
