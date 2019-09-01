@@ -9,9 +9,13 @@ public class PickupItem : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI pickUpText;
 
-    private bool pickUpAllowed;
-    private GameObject player;
+    public bool interactable = false;
+
+    private Player playerScript;
+
+    //public Animator anim;
     private bool paused = false;
+    //private GameObject player;
 
     public bool persistent = false;
 
@@ -19,6 +23,10 @@ public class PickupItem : MonoBehaviour
     void Start()
     {
         pickUpText.gameObject.SetActive(false);
+
+        playerScript = FindObjectOfType<Player>();
+        
+        //anim = playerScript.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,16 +35,18 @@ public class PickupItem : MonoBehaviour
 
         if (Input.GetButtonDown("Interact"))
         {
-            if (!paused && pickUpAllowed)
+            if (!paused && interactable)
             {
+                playerScript.GetComponent<Animator>().SetBool("isCrouching", true);
                 paused = true;
                 pickUpText.gameObject.SetActive(true);
                 Time.timeScale = 0f;
             }
             else
             {
-                if (pickUpAllowed)
+                if (interactable)
                 {
+                    playerScript.GetComponent<Animator>().SetBool("isCrouching", false);
                     paused = false;
                     pickUpText.gameObject.SetActive(false);
                     Time.timeScale = 1f;
@@ -51,7 +61,7 @@ public class PickupItem : MonoBehaviour
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.CompareTag("Player")) {
-            pickUpAllowed = true;
+            interactable = true;
         }
     }
 
@@ -59,7 +69,7 @@ public class PickupItem : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            pickUpAllowed = false;
+            interactable = false;
         }
     }
 
