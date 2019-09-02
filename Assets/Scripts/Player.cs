@@ -120,7 +120,7 @@ public class Player : MonoBehaviour
                 //print("We hit something");
                 if (hit.collider.gameObject.tag == "Enemy")
                 {
-                    print("Enemy sighted");
+                    //print("Enemy sighted");
                 }
             }
         }
