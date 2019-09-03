@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
 
     [SerializeField] RawImage Image;
     [SerializeField] ItemTooltip tooltip;
+    [SerializeField] TextMeshProUGUI amountText;
 
     public event Action<Item> OnRightClickEvent;
 
@@ -34,9 +36,24 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         }
     }
 
+    private int _amount;
+    public int Amount
+    {
+        get { return _amount; }
+        set
+        {
+            _amount = value;
+            amountText.enabled = _item != null && _item.MaximumStacks > 1 && _amount > 1;
+            if (amountText.enabled)
+            {
+                amountText.text = _amount.ToString();
+            }
+        }
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        print("Click");
+        //print("Click");
         if (eventData != null && eventData.button == PointerEventData.InputButton.Right)
         {
             if (Item != null && OnRightClickEvent != null)
@@ -53,9 +70,14 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
             Image = GetComponent<RawImage>();
         }
 
-        if(tooltip == null)
+        if (tooltip == null)
         {
             tooltip = FindObjectOfType<ItemTooltip>();
+        }
+
+        if (amountText == null)
+        {
+            amountText = GetComponentInChildren<TextMeshProUGUI>();
         }
     }
 

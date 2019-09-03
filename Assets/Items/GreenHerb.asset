@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb72e2fa3ef2fd943a1bf602b465ac8e, type: 3}
+  m_Name: GreenHerb
+  m_EditorClassIdentifier: 
+  id: e50fcfc212d1fda4f824539acff77a1a
+  ItemName: Green Herb
+  Icon: {fileID: 2800000, guid: d164b12e0cf0f324fbe6d5c064d77075, type: 3}
+  ItemDescription: An herb that restores partial health.
+  MaximumStacks: 1
