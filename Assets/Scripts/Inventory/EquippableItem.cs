@@ -11,9 +11,9 @@ public enum EquipmentType
 public class EquippableItem : Item
 {
 
-    public int StrengthBonus;
-    [Space]
-    public float StrengthPercentBonus;
+    //public int StrengthBonus;
+    //[Space]
+    //public float StrengthPercentBonus;
     [Space]
     public EquipmentType EquipmentType;
 

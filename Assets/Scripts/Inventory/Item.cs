@@ -8,5 +8,6 @@ public class Item : ScriptableObject
 
     public string ItemName;
     public Texture Icon;
+    public string ItemDescription;
 
 }
