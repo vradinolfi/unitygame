@@ -14,6 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Beretta 92FS Compact
   Icon: {fileID: 2800000, guid: dab0310d6aca9504986df4105de19494, type: 3}
-  StrengthBonus: 0
-  StrengthPercentBonus: 0
+  ItemDescription: 'One of the most iconic military pistols in the world. '
   EquipmentType: 0

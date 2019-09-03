@@ -9,7 +9,7 @@ public class ItemTooltip : MonoBehaviour
     [SerializeField] TextMeshProUGUI ItemSlotText;
     //[SerializeField] TextMeshProUGUI ItemStatsText;
 
-    public void ShowTooltip(EquippableItem item)
+    public void ShowTooltip(Item item)
     {
         ItemNameText.text = item.ItemName;
 

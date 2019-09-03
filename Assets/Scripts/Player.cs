@@ -15,6 +15,9 @@ public class Player : MonoBehaviour
     public float poisonRate;
     public bool isPoisoned;
     public float rayDistance = 4f;
+    public bool gamePaused = false;
+    public GameObject pauseMenu;
+    public GameObject inventory;
 
     private float health;
     private bool dead;
@@ -48,6 +51,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         health = maxHealth;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 
         //enemy = GameObject.Find("Enemy1");
         //enemyScript = enemy.GetComponent<Enemy>();
@@ -169,6 +174,56 @@ public class Player : MonoBehaviour
             anim.SetBool("IsAiming", false);
         }
 
+    }
+
+    private void Update()
+    {
+        // Pause Game
+        /*if (Input.GetButtonDown("Cancel"))
+        {
+            if (gamePaused == false)
+            {
+                Time.timeScale = 0;
+                gamePaused = true;
+
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                pauseMenu.SetActive(true);
+            }
+            else
+            {
+                Time.timeScale = 1;
+                gamePaused = false;
+
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                pauseMenu.SetActive(false);
+            }
+        }*/
+
+        // Open Inventory
+        if (Input.GetButtonDown("Inventory"))
+        {
+            if (gamePaused == false)
+            {
+                Time.timeScale = 0;
+                gamePaused = true;
+
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                inventory.SetActive(true);
+            }
+            else
+            {
+
+                Time.timeScale = 1;
+                gamePaused = false;
+
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                inventory.SetActive(false);
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
