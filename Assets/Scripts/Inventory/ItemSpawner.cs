@@ -8,6 +8,7 @@ public class ItemSpawner : MonoBehaviour
     [SerializeField] int amount = 1;
     [SerializeField] Inventory inventory;
     public GameObject textPopup;
+    public AudioSource hit;
 
     private TextMeshProUGUI ingameText;
     private bool isInRange;
@@ -58,6 +59,7 @@ public class ItemSpawner : MonoBehaviour
                     Time.timeScale = 1f;
                     paused = false;
                     textPopup.SetActive(false);
+                    hit.Play();
                 }
             }
         }
