@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using TMPro;
 
 public class ItemSpawner : MonoBehaviour
 {
@@ -6,31 +7,57 @@ public class ItemSpawner : MonoBehaviour
     [SerializeField] Item item;
     [SerializeField] int amount = 1;
     [SerializeField] Inventory inventory;
+    public GameObject textPopup;
 
+    private TextMeshProUGUI ingameText;
     private bool isInRange;
     private bool isPickedUp;
+    private bool paused = false;
+
+    private void Start()
+    {
+        ingameText = textPopup.GetComponent<TextMeshProUGUI>();
+    }
 
     private void Update()
     {
-        if (isInRange && !isPickedUp && Input.GetButtonDown("Interact"))
+        if (Input.GetButtonDown("Interact"))
         {
-
-            for (int i = amount; i > 0; i--)
+            if (isInRange && !isPickedUp && !paused)
             {
-                Item itemCopy = item.GetCopy();
 
-                if (inventory.AddItem(item.GetCopy()))
+                ingameText.text = "Will you take the <color=green><uppercase>" + item.ItemName + "</uppercase></color>?";
+                textPopup.SetActive(true);
+                Time.timeScale = 0;
+                paused = true;
+
+            }
+            else
+            {
+                if (isInRange)
                 {
-                    amount--;
-                    if (amount == 0)
+                    for (int i = amount; i > 0; i--)
                     {
-                        isPickedUp = true;
-                        this.gameObject.SetActive(false);
+                        Item itemCopy = item.GetCopy();
+
+                        if (inventory.AddItem(item.GetCopy()))
+                        {
+                            amount--;
+                            if (amount == 0)
+                            {
+                                isPickedUp = true;
+                                this.gameObject.SetActive(false);
+                            }
+                        }
+                        else
+                        {
+                            itemCopy.Destroy();
+                        }
                     }
-                }
-                else
-                {
-                    itemCopy.Destroy();
+
+                    Time.timeScale = 1f;
+                    paused = false;
+                    textPopup.SetActive(false);
                 }
             }
         }

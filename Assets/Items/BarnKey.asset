@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb72e2fa3ef2fd943a1bf602b465ac8e, type: 3}
   m_Name: BarnKey
   m_EditorClassIdentifier: 
+  id: 3f5bf1207d5b8104b8f5690baa8f7baa
   ItemName: Skeleton Key
   Icon: {fileID: 2800000, guid: 2ce967e7527be464aa76d8735e9abbfa, type: 3}
-  ItemDescription: A rusty old key.
+  ItemDescription: A rusty old key. I wonder what it's for.
+  MaximumStacks: 1
