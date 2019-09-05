@@ -6,25 +6,40 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] Inventory inventory;
     [SerializeField] EquipmentPanel equipmentPanel;
 
+    public Player player;
+
     private void Awake()
     {
-        inventory.OnItemRightClickedEvent += EquipFromInventory;
-        equipmentPanel.OnItemRightClickedEvent += UnequipFromEquipPanel;
+        inventory.OnRightClickEvent += InventoryRightClick;
+        equipmentPanel.OnRightClickEvent += EquipmentPanelRightClick;
+
+        player = FindObjectOfType<Player>();
     }
 
-    private void EquipFromInventory(Item item)
+    private void InventoryRightClick(ItemSlot itemSlot)
     {
-        if (item is EquippableItem)
+        if (itemSlot.Item is EquippableItem)
         {
-            Equip((EquippableItem)item);
+            Equip((EquippableItem)itemSlot.Item);
+        }
+        else if (itemSlot.Item is UsableItem)
+        {
+            UsableItem usableItem = (UsableItem)itemSlot.Item;
+            usableItem.Use(player);
+
+            if (usableItem.IsConsumable)
+            {
+                inventory.RemoveItem(usableItem);
+                usableItem.Destroy();
+            }
         }
     }
 
-    private void UnequipFromEquipPanel(Item item)
+    private void EquipmentPanelRightClick(ItemSlot itemSlot)
     {
-        if (item is EquippableItem)
+        if (itemSlot.Item is EquippableItem)
         {
-            Unequip((EquippableItem)item);
+            Unequip((EquippableItem)itemSlot.Item);
         }
     }
 

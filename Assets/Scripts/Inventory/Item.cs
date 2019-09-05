@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Items/Item")]
 public class Item : ScriptableObject
 {
 

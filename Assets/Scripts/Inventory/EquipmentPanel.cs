@@ -6,13 +6,13 @@ public class EquipmentPanel : MonoBehaviour
     [SerializeField] Transform equipmentSlotsParent;
     [SerializeField] EquipmentSlot[] equipmentSlots;
 
-    public event Action<Item> OnItemRightClickedEvent;
+    public event Action<ItemSlot> OnRightClickEvent;
 
     private void Start()
     {
         for (int i = 0; i < equipmentSlots.Length; i++)
         {
-            equipmentSlots[i].OnRightClickEvent += OnItemRightClickedEvent;
+            equipmentSlots[i].OnRightClickEvent += OnRightClickEvent;
         }
     }
 

@@ -19,7 +19,8 @@ public class Player : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject inventory;
 
-    private float health;
+    public float health;
+
     private bool dead;
     private RaycastHit hit;
     private Ray ray;
@@ -51,8 +52,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         health = maxHealth;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
 
         //enemy = GameObject.Find("Enemy1");
         //enemyScript = enemy.GetComponent<Enemy>();
@@ -159,7 +160,7 @@ public class Player : MonoBehaviour
                                         hit.transform.position.z);
                         transform.LookAt(targetPostition);
 
-                        if (Input.GetButtonDown("Interact"))
+                        if (Input.GetButtonDown("Submit"))
                         {
                             enemyScript = hit.collider.gameObject.GetComponent<Enemy>();
                             enemyScript.enemyHealth -= 25;

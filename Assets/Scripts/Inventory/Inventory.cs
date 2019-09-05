@@ -1,24 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Inventory : MonoBehaviour
 {
-
-    [SerializeField] Item[] items;
+    [FormerlySerializedAs("items")]
+    [SerializeField] Item[] startingItems;
     [SerializeField] Transform itemsParent;
     [SerializeField] ItemSlot[] itemSlots;
 
-    public event Action<Item> OnItemRightClickedEvent;
+    public event Action<ItemSlot> OnRightClickEvent;
 
     private void Start()
     {
         for (int i = 0; i < itemSlots.Length; i++)
         {
-            itemSlots[i].OnRightClickEvent += OnItemRightClickedEvent;
+            itemSlots[i].OnRightClickEvent += OnRightClickEvent;
         }
 
-        RefreshUI();
+        SetStartingItems();
     }
 
     private void OnValidate()
@@ -28,23 +29,24 @@ public class Inventory : MonoBehaviour
             itemSlots = itemsParent.GetComponentsInChildren<ItemSlot>();
         }
 
-        RefreshUI();
+        SetStartingItems();
     }
 
-    private void RefreshUI()
+    private void SetStartingItems()
     {
         int i = 0;
-        for (; i < items.Length && i < itemSlots.Length; i++)
-        {
-            itemSlots[i].Item = items[i].GetCopy();
-            itemSlots[i].Amount = 1;
-        }
-
-        for (; i < itemSlots.Length; i++)
-        {
-            itemSlots[i].Item = null;
-            itemSlots[i].Amount = 0;
-        }
+ 		for (; i<startingItems.Length && i<itemSlots.Length; i++)
+ 		{
+			itemSlots[i].Item = Instantiate(startingItems[i]);
+			itemSlots[i].Item = startingItems[i].GetCopy();
+			itemSlots[i].Amount = 1;
+ 		}
+ 
+ 		for (; i<itemSlots.Length; i++)
+ 		{
+ 			itemSlots[i].Item = null;
+			itemSlots[i].Amount = 0;
+ 		}
     }
 
     public bool AddItem(Item item)

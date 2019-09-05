@@ -8,7 +8,10 @@ public class ItemSpawner : MonoBehaviour
     [SerializeField] int amount = 1;
     [SerializeField] Inventory inventory;
     public GameObject textPopup;
+    public GameObject choice1;
+    public GameObject choice2;
     public AudioSource hit;
+
 
     private TextMeshProUGUI ingameText;
     private bool isInRange;
@@ -22,7 +25,7 @@ public class ItemSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Interact"))
+        if (Input.GetButtonDown("Submit"))
         {
             if (isInRange && !isPickedUp && !paused)
             {

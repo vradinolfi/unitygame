@@ -13,7 +13,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     [SerializeField] ItemTooltip tooltip;
     [SerializeField] TextMeshProUGUI amountText;
 
-    public event Action<Item> OnRightClickEvent;
+    public event Action<ItemSlot> OnRightClickEvent;
 
     private Item _item;
 
@@ -56,10 +56,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         //print("Click");
         if (eventData != null && eventData.button == PointerEventData.InputButton.Right)
         {
-            if (Item != null && OnRightClickEvent != null)
-            {
-                OnRightClickEvent(Item);
-            }
+            if (OnRightClickEvent != null)
+                OnRightClickEvent(this);
         }
     }
 

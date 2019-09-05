@@ -7,7 +7,7 @@ public enum EquipmentType
     Accessory
 }
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Items/Equippable Item")]
 public class EquippableItem : Item
 {
 

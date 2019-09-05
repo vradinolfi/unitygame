@@ -33,7 +33,7 @@ public class PickupItem : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetButtonDown("Interact"))
+        if (Input.GetButtonDown("Submit"))
         {
             if (!paused && interactable)
             {

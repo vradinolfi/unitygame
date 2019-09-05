@@ -11,7 +11,7 @@ public class KeyCheck : MonoBehaviour
     void OnTriggerStay()
     {
         
-        if (Input.GetButton("Interact"))
+        if (Input.GetButton("Submit"))
         {
             //if (player.GetComponentInChildren<Item>()) {
                 door.Play();
