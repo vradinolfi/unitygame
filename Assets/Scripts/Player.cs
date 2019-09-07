@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public float maxHealth;
     public float poisonRate;
     public bool isPoisoned;
+    public bool isAiming;
 
     public float rayDistance = 4f;
     public bool gamePaused = false;
@@ -97,21 +98,25 @@ public class Player : MonoBehaviour
 
             isRunning = true;
             speed = runSpeed;
-            //print("Running");
 
         }
         else if (movingBackward)
         {
             speed = backSpeed;
-            //print("Walking backward");
         }
         else
         {
 
             isRunning = false;
             speed = walkSpeed;
-            //print("Walking forward");
 
+        }
+
+        
+        if (isAiming)
+        {
+            speed = 0;
+            isRunning = false;
         }
 
         // Animate the player.
@@ -144,42 +149,6 @@ public class Player : MonoBehaviour
         {
             health -= poisonRate * Time.deltaTime;
         }
-
-        /*
-        if (Input.GetButton("Aim"))
-        {
-            anim.SetBool("IsAiming", true);
-            //enemyScript.enemyHealth -= 25f;
-            if (Physics.Raycast(ray, out hit))
-            {
-                if (hit.distance < rayDistance)
-                {
-                    //print("We hit something");
-                    if (hit.collider.gameObject.tag == "Enemy")
-                    {
-                        print("Enemy locked");
-                        //turnSpeed = 0;
-
-                        Vector3 targetPostition = new Vector3(hit.transform.position.x,
-                                        this.transform.position.y,
-                                        hit.transform.position.z);
-                        transform.LookAt(targetPostition);
-
-                        if (Input.GetButtonDown("Submit"))
-                        {
-                            enemyScript = hit.collider.gameObject.GetComponent<Enemy>();
-                            enemyScript.enemyHealth -= 25;
-                            print("Shot fired!");
-                        }
-
-                    }
-                }
-            }
-        } else
-        {
-            anim.SetBool("IsAiming", false);
-        }
-        */
 
     }
 
@@ -235,11 +204,11 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        /*if(collision.gameObject.tag == "Enemy")
         {
             enemyScript = collision.gameObject.GetComponent<Enemy>();
             enemyScript.enemyHealth -= 25;
-        }
+        }*/
     }
 
     void Move(float h, float v)
@@ -256,6 +225,11 @@ public class Player : MonoBehaviour
         bool walkingBackwards = h != 0f || v < 0f;
 
         // Tell the animator whether or not the player is walking.
+        if (isAiming)
+        {
+            walking = false;
+        }
+
         anim.SetBool("IsWalking", walking);
         //anim.SetBool("IsWalkingBackwards", walkingBackwards);
         anim.SetBool("IsRunning", isRunning);

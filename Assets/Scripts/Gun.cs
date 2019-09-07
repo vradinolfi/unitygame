@@ -60,10 +60,12 @@ public class Gun : MonoBehaviour
         {
             Aim();
             anim.SetBool("IsAiming", true);
+            player.isAiming = true;
         }
         else
         {
             anim.SetBool("IsAiming", false);
+            player.isAiming = false;
         }
 
         if (Input.GetButton("Aim") && Input.GetButtonDown("Submit") && Time.time >= nextTimeToFire)
