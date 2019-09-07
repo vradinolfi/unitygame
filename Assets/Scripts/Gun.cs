@@ -51,11 +51,6 @@ public class Gun : MonoBehaviour
     void Update()
     {
 
-        if (isReloading)
-        {
-            return;
-        }
-
         if (Input.GetButton("Aim"))
         {
             Aim();
@@ -66,6 +61,11 @@ public class Gun : MonoBehaviour
         {
             anim.SetBool("IsAiming", false);
             player.isAiming = false;
+        }
+
+        if (isReloading)
+        {
+            return;
         }
 
         if (Input.GetButton("Aim") && Input.GetButtonDown("Submit") && Time.time >= nextTimeToFire)
