@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public float maxHealth;
     public float poisonRate;
     public bool isPoisoned;
+
     public float rayDistance = 4f;
     public bool gamePaused = false;
     public GameObject pauseMenu;
@@ -116,8 +117,10 @@ public class Player : MonoBehaviour
         // Animate the player.
         Animating(h, v);
 
+        /*
         ray = new Ray(transform.position + new Vector3(0f, playerCollider.center.y, 0f), transform.forward);
         Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red); // make sure gizmos are toggled on in viewport
+        
 
         if (Physics.Raycast(ray, out hit))
         {
@@ -130,6 +133,7 @@ public class Player : MonoBehaviour
                 }
             }
         }
+        */
 
         if (health <= 0 && !dead)
         {
@@ -141,6 +145,7 @@ public class Player : MonoBehaviour
             health -= poisonRate * Time.deltaTime;
         }
 
+        /*
         if (Input.GetButton("Aim"))
         {
             anim.SetBool("IsAiming", true);
@@ -174,6 +179,7 @@ public class Player : MonoBehaviour
         {
             anim.SetBool("IsAiming", false);
         }
+        */
 
     }
 
