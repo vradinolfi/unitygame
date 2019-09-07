@@ -15,15 +15,19 @@ public class PointOfInterest : MonoBehaviour
     private bool gamePaused = false;
     private bool hasKey = false;
 
+    Player player;
+
     // Start is called before the first frame update
     void Start()
     {
         ingameText = textPopup.GetComponent<TextMeshProUGUI>();
+
+        player = FindObjectOfType<Player>();
     }
 
     private void Update()
     {
-        if (Input.GetButtonDown("Submit"))
+        if (!player.isAiming && Input.GetButtonDown("Submit"))
         {
 
 

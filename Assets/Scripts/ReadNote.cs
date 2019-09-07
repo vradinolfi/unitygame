@@ -15,15 +15,19 @@ public class ReadNote : MonoBehaviour
     private bool isInRange;
     private bool gamePaused = false;
 
+    Player player;
+
     // Start is called before the first frame update
     void Start()
     {
         noteText = noteView.GetComponent<TextMeshProUGUI>();
+
+        player = FindObjectOfType<Player>();
     }
 
     private void Update()
     {
-        if (Input.GetButtonDown("Submit"))
+        if (!player.isAiming && Input.GetButtonDown("Submit"))
         {
 
              Inspect();

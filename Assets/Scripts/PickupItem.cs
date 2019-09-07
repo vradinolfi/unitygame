@@ -33,7 +33,7 @@ public class PickupItem : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetButtonDown("Submit"))
+        if (!playerScript.isAiming && Input.GetButtonDown("Submit"))
         {
             if (!paused && interactable)
             {

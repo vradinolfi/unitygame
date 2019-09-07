@@ -18,14 +18,18 @@ public class ItemSpawner : MonoBehaviour
     private bool isPickedUp;
     private bool paused = false;
 
+    Player player;
+
     private void Start()
     {
         ingameText = textPopup.GetComponent<TextMeshProUGUI>();
+
+        player = FindObjectOfType<Player>();
     }
 
     private void Update()
     {
-        if (Input.GetButtonDown("Submit"))
+        if (!player.isAiming && Input.GetButtonDown("Submit"))
         {
             if (isInRange && !isPickedUp && !paused)
             {
