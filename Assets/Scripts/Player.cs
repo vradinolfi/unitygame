@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject inventory;
 
+    public Interactable focus;
+
     public float health;
 
     private bool dead;
@@ -56,9 +58,6 @@ public class Player : MonoBehaviour
         health = maxHealth;
         //Cursor.visible = false;
         //Cursor.lockState = CursorLockMode.Locked;
-
-        //enemy = GameObject.Find("Enemy1");
-        //enemyScript = enemy.GetComponent<Enemy>();
     }
 
     void FixedUpdate()
@@ -90,9 +89,6 @@ public class Player : MonoBehaviour
             movingForward = false;
         }
 
-        // Move the player around the scene.
-        Move(h, v);
-
         if (movingForward && Input.GetButton("Run"))
         {
 
@@ -111,13 +107,15 @@ public class Player : MonoBehaviour
             speed = walkSpeed;
 
         }
-
         
         if (isAiming)
         {
             speed = 0;
             isRunning = false;
         }
+
+        // Move the player around the scene.
+        Move(h, v);
 
         // Animate the player.
         Animating(h, v);
@@ -200,6 +198,44 @@ public class Player : MonoBehaviour
                 inventory.SetActive(false);
             }
         }
+
+        if (Input.GetButtonDown("Submit"))
+        {
+            Ray ray = new Ray(transform.position, transform.forward);
+            Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, 100))
+            {
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
+                if (interactable != null)
+                {
+                    SetFocus(interactable);
+                }
+            }
+        }
+    }
+
+    void SetFocus(Interactable newFocus)
+    {
+        if (newFocus != focus)
+        {
+            if (focus != null)
+            {
+                focus.OnDefocused();
+            }
+            focus = newFocus;
+        }
+        newFocus.OnFocused(transform);
+    }
+
+    void RemoveFocus()
+    {
+        if (focus != null)
+        {
+            focus.OnDefocused();
+        }
+        focus = null;
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -1,15 +1,21 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
 
     public float enemyHealth = 100f;
+    public float attackDamage = 25f;
+    public float restTime = 5f;
     public bool dead = false;
+
+    private bool isAttacking = false;
+    private Player player;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //player = FindObjectOfType<Player>();
     }
 
     // Update is called once per frame
@@ -19,6 +25,28 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            player = collision.gameObject.GetComponent<Player>();
+
+            if (!isAttacking)
+            {
+                StartCoroutine(Attack());
+            }
+        }
+    }
+
+    IEnumerator Attack()
+    {
+        player.health -= attackDamage;
+        print(player.health);
+        isAttacking = true;
+        yield return new WaitForSeconds(restTime);
+        isAttacking = false;
     }
 
     public void TakeDamage(float amount)
