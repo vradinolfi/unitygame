@@ -52,8 +52,8 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (equipPistol == true)
-        {
+        //if (equipPistol == true)
+        //{
 
             if (Input.GetButton("Aim"))
             {
@@ -78,7 +78,7 @@ public class Gun : MonoBehaviour
                 Shoot();
             }
 
-        }
+        //}
 
         //ray = new Ray(player.transform.position + new Vector3(0f, playerCollider.center.y, 0f), player.transform.forward);
 
