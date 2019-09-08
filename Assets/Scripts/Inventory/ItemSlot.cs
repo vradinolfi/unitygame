@@ -23,6 +23,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         set
         {
             _item = value;
+            if (_item == null && Amount != 0) Amount = 0;
 
             if (_item == null)
             {
@@ -43,10 +44,16 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         set
         {
             _amount = value;
-            amountText.enabled = _item != null && _item.MaximumStacks > 1 && _amount > 1;
-            if (amountText.enabled)
+            if (_amount < 0) _amount = 0;
+            if (_amount == 0 && Item != null) Item = null;
+
+            if (amountText != null)
             {
-                amountText.text = _amount.ToString();
+                amountText.enabled = _item != null && _item.MaximumStacks > 1 && _amount > 1;
+                if (amountText.enabled)
+                {
+                    amountText.text = _amount.ToString();
+                }
             }
         }
     }

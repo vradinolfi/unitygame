@@ -21,8 +21,6 @@ public class Player : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject inventory;
 
-    public Interactable focus;
-
     public float health;
 
     private bool dead;
@@ -198,24 +196,9 @@ public class Player : MonoBehaviour
                 inventory.SetActive(false);
             }
         }
-
-        if (Input.GetButtonDown("Submit"))
-        {
-            Ray ray = new Ray(transform.position, transform.forward);
-            Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, 100))
-            {
-                Interactable interactable = hit.collider.GetComponent<Interactable>();
-                if (interactable != null)
-                {
-                    SetFocus(interactable);
-                }
-            }
-        }
     }
 
+    /*
     void SetFocus(Interactable newFocus)
     {
         if (newFocus != focus)
@@ -237,6 +220,7 @@ public class Player : MonoBehaviour
         }
         focus = null;
     }
+    */
 
     private void OnCollisionEnter(Collision collision)
     {

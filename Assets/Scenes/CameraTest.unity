@@ -33358,7 +33358,7 @@ RectTransform:
   m_Children:
   - {fileID: 1140748698}
   m_Father: {fileID: 1772596009}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -44138,7 +44138,7 @@ RectTransform:
   m_Children:
   - {fileID: 1908590165}
   m_Father: {fileID: 1772596009}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -48550,7 +48550,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1137766426}
   - {fileID: 2012100484}
   - {fileID: 1396770390}
   - {fileID: 1547119345}
@@ -49696,12 +49695,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2012100484}
+  m_Father: {fileID: 1233376882}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 125, y: -100}
+  m_AnchoredPosition: {x: 0.000030517578, y: -50.000027}
   m_SizeDelta: {x: 250, y: 175}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &782252274
@@ -50496,7 +50495,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &790870129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50510,6 +50509,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: 100
+  attackDamage: 25
+  restTime: 5
   dead: 0
 --- !u!136 &790870130
 CapsuleCollider:
@@ -54958,7 +54959,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -10}
+  m_AnchoredPosition: {x: 0, y: -16}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &938480775
@@ -59603,7 +59604,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 50, y: -50}
-  m_SizeDelta: {x: 290, y: 244.75891}
+  m_SizeDelta: {x: 290, y: 245}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1033996274
 MonoBehaviour:
@@ -65017,13 +65018,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 753722552}
+  m_Father: {fileID: 1772596009}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -310.00003, y: -340.12054}
-  m_SizeDelta: {x: -720, y: -780.2411}
+  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1137766427
 MonoBehaviour:
@@ -66160,6 +66161,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: 100
+  attackDamage: 25
+  restTime: 5
   dead: 0
 --- !u!136 &1168799600
 CapsuleCollider:
@@ -68600,14 +68603,15 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 938480774}
+  - {fileID: 782252273}
   m_Father: {fileID: 2012100484}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 124.99997, y: 367.62054}
-  m_SizeDelta: {x: -1630, y: -835.2411}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 145, y: -50}
+  m_SizeDelta: {x: 290, y: 245}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1233376883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73340,7 +73344,7 @@ RectTransform:
   m_Children:
   - {fileID: 1033996273}
   m_Father: {fileID: 753722552}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -84484,7 +84488,7 @@ RectTransform:
   m_Children:
   - {fileID: 978586370}
   m_Father: {fileID: 753722552}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -92398,10 +92402,11 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1137766426}
   - {fileID: 403281328}
   - {fileID: 685391747}
   m_Father: {fileID: 753722552}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -92715,6 +92720,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: 100
+  attackDamage: 25
+  restTime: 5
   dead: 0
 --- !u!136 &1786699347
 CapsuleCollider:
@@ -97956,7 +97963,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -10}
+  m_AnchoredPosition: {x: 0, y: -16}
   m_SizeDelta: {x: 219.1, y: 40.5}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1908265524
@@ -103391,9 +103398,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1233376882}
-  - {fileID: 782252273}
   m_Father: {fileID: 753722552}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -108692,7 +108698,6 @@ MonoBehaviour:
   gamePaused: 0
   pauseMenu: {fileID: 11299664}
   inventory: {fileID: 753722551}
-  focus: {fileID: 0}
   health: 0
 --- !u!1001 &2108446160
 PrefabInstance:

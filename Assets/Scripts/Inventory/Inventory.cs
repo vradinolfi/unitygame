@@ -16,7 +16,7 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < itemSlots.Length; i++)
         {
-            itemSlots[i].OnRightClickEvent += OnRightClickEvent;
+            itemSlots[i].OnRightClickEvent += slot => OnRightClickEvent(slot);
         }
 
         SetStartingItems();
@@ -118,7 +118,7 @@ public class Inventory : MonoBehaviour
         {
             if (itemSlots[i].Item.ID == itemID)
             {
-                number++;
+                number += itemSlots[i].Amount;
             }
         }
         return number;

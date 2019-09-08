@@ -12,7 +12,7 @@ public class EquipmentPanel : MonoBehaviour
     {
         for (int i = 0; i < equipmentSlots.Length; i++)
         {
-            equipmentSlots[i].OnRightClickEvent += OnRightClickEvent;
+            equipmentSlots[i].OnRightClickEvent += slot => OnRightClickEvent(slot);
         }
     }
 

@@ -25,12 +25,20 @@ public class InventoryManager : MonoBehaviour
         else if (itemSlot.Item is UsableItem)
         {
             UsableItem usableItem = (UsableItem)itemSlot.Item;
-            usableItem.Use(player);
 
-            if (usableItem.IsConsumable)
+            if (usableItem.name == "GreenHerb" && player.health >= player.maxHealth)
             {
-                inventory.RemoveItem(usableItem);
-                usableItem.Destroy();
+                Debug.Log("Health full");
+            }
+            else
+            {
+                usableItem.Use(player);
+
+                if (usableItem.IsConsumable)
+                {
+                    inventory.RemoveItem(usableItem);
+                    usableItem.Destroy();
+                }
             }
         }
     }
