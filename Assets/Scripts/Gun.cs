@@ -15,6 +15,8 @@ public class Gun : MonoBehaviour
     public float reloadTime = 1f;
     private bool isReloading = false;
 
+    public bool equipPistol;
+
     public Player player;
     public ParticleSystem muzzleFlash;
     public AudioSource shotSound;
@@ -50,33 +52,37 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetButton("Aim"))
+        if (equipPistol == true)
         {
-            Aim();
-            anim.SetBool("IsAiming", true);
-            player.isAiming = true;
-        }
-        else
-        {
-            anim.SetBool("IsAiming", false);
-            player.isAiming = false;
+
+            if (Input.GetButton("Aim"))
+            {
+                Aim();
+                anim.SetBool("IsAiming", true);
+                player.isAiming = true;
+            }
+            else
+            {
+                anim.SetBool("IsAiming", false);
+                player.isAiming = false;
+            }
+
+            if (isReloading)
+            {
+                return;
+            }
+
+            if (Input.GetButton("Aim") && Input.GetButtonDown("Submit") && Time.time >= nextTimeToFire)
+            {
+                nextTimeToFire = Time.time + 1f / fireRate;
+                Shoot();
+            }
+
         }
 
-        if (isReloading)
-        {
-            return;
-        }
+        //ray = new Ray(player.transform.position + new Vector3(0f, playerCollider.center.y, 0f), player.transform.forward);
 
-        if (Input.GetButton("Aim") && Input.GetButtonDown("Submit") && Time.time >= nextTimeToFire)
-        {
-            nextTimeToFire = Time.time + 1f / fireRate;
-            Shoot();
-        }
-
-        ray = new Ray(player.transform.position + new Vector3(0f, playerCollider.center.y, 0f), player.transform.forward);
-
-        Debug.DrawRay(ray.origin, ray.direction * range, Color.red); // make sure gizmos are toggled on in viewport
+        //Debug.DrawRay(ray.origin, ray.direction * range, Color.red); // make sure gizmos are toggled on in viewport
 
     }
 

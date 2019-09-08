@@ -108491,6 +108491,7 @@ MonoBehaviour:
   fireRate: 15
   maxAmmo: 15
   reloadTime: 4.3
+  equipPistol: 0
   player: {fileID: 2107308172}
   muzzleFlash: {fileID: 1487027756}
   shotSound: {fileID: 1720000029}

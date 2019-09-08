@@ -39,4 +39,9 @@ public class EquippableItem : Item
         Destroy(this);
     }
 
+    public void Equip(Gun gun)
+    {
+        gun.equipPistol = true;
+    }
+
 }

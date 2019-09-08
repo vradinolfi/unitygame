@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 public class Inventory : MonoBehaviour
 {
-    [FormerlySerializedAs("items")]
+
     [SerializeField] Item[] startingItems;
     [SerializeField] Transform itemsParent;
     [SerializeField] ItemSlot[] itemSlots;
