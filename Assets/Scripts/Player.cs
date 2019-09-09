@@ -67,6 +67,8 @@ public class Player : MonoBehaviour
         bool movingForward = false;
         bool movingBackward = false;
 
+        playerRigidbody.AddForce(Physics.gravity * (playerRigidbody.mass * playerRigidbody.mass));
+
         if (Input.GetAxisRaw("Vertical") == 1)
         {
 
@@ -235,7 +237,7 @@ public class Player : MonoBehaviour
     {
         playerRigidbody.transform.Rotate(0, h, 0);
         playerRigidbody.transform.Translate(0, 0, v);
-        playerRigidbody.velocity = new Vector3(0, -2, 0);
+        playerRigidbody.velocity = new Vector3(0, 0, 0);
     }
 
     void Animating(float h, float v)
