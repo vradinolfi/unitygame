@@ -6,7 +6,8 @@ using TMPro;
 public class ReadNote : MonoBehaviour
 {
 
-    [SerializeField] string text;
+    [TextArea(3,10)]
+    public string text;
     public GameObject noteView;
     public GameObject note;
     public AudioSource pageflip;
