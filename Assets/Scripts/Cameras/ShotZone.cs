@@ -25,9 +25,11 @@ public class ShotZone : MonoBehaviour
             foreach(Camera camera in Camera.allCameras)
             {
                 camera.enabled = false;
+                camera.GetComponent<AudioListener>().enabled = false;
             }
 
             targetCamera.enabled = true;
+            targetCamera.GetComponent<AudioListener>().enabled = true;
 
         }
 
