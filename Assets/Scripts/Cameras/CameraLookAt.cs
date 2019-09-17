@@ -6,11 +6,11 @@ public class CameraLookAt : MonoBehaviour
 {
     public Transform target;
     public int xOffset = 0;
+    public int yOffset = 0;
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.LookAt(target);
-        transform.rotation *= Quaternion.Euler(xOffset, 0, 0);
+        transform.rotation *= Quaternion.Euler(xOffset, yOffset, 0);
     }
 }
