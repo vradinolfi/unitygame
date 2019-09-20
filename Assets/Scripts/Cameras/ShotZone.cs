@@ -9,13 +9,6 @@ public class ShotZone : MonoBehaviour
 
     public Camera targetCamera;
 
-    void Start()
-    {
-
-
-
-    }
-
     void OnTriggerEnter(Collider c)
     {
         if (c.CompareTag("Player"))
@@ -24,10 +17,12 @@ public class ShotZone : MonoBehaviour
 
             foreach(Camera camera in Camera.allCameras)
             {
+                //camera.transform.gameObject.SetActive(false);
                 camera.enabled = false;
                 camera.GetComponent<AudioListener>().enabled = false;
             }
 
+            //targetCamera.transform.gameObject.SetActive(true);
             targetCamera.enabled = true;
             targetCamera.GetComponent<AudioListener>().enabled = true;
 
