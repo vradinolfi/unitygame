@@ -28,7 +28,7 @@ public class Gun : MonoBehaviour
     public AudioClip reloadSound;
 
     private AudioClip currentClip;
-    private CapsuleCollider playerCollider;
+    private CharacterController playerController;
     private Animator anim;
 
     RaycastHit hit;
@@ -37,7 +37,7 @@ public class Gun : MonoBehaviour
     private void Start()
     {
 
-        playerCollider = player.GetComponent<CapsuleCollider>();
+        playerController = player.GetComponent<CharacterController>();
         anim = player.GetComponent<Animator>();
 
         currentAmmo = maxAmmo;
@@ -88,7 +88,7 @@ public class Gun : MonoBehaviour
 
     void Aim()
     {
-        if (Physics.Raycast(player.transform.position + new Vector3(0f, playerCollider.center.y, 0f), player.transform.forward, out hit, range))
+        if (Physics.Raycast(player.transform.position + new Vector3(0f, playerController.center.y, 0f), player.transform.forward, out hit, range))
         {
             if (hit.collider.gameObject.tag == "Enemy")
             {
@@ -137,7 +137,7 @@ public class Gun : MonoBehaviour
 
         shotSound.Play();
 
-        if (Physics.Raycast(player.transform.position + new Vector3(0f, playerCollider.center.y, 0f), player.transform.forward, out hit, range))
+        if (Physics.Raycast(player.transform.position + new Vector3(0f, playerController.center.y, 0f), player.transform.forward, out hit, range))
         {
             //Debug.Log(hit.transform.name);
 

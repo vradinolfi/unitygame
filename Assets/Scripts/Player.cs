@@ -28,7 +28,8 @@ public class Player : MonoBehaviour
     private Ray ray;
 
     Animator anim;                      // Reference to the animator component.
-    Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
+    //Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
+    CharacterController playerController;
     CapsuleCollider[] colliders;
     CapsuleCollider playerCollider;
     PlayerControls controls;
@@ -45,9 +46,9 @@ public class Player : MonoBehaviour
 
         // Set up references.
         anim = GetComponent<Animator>();
-        playerRigidbody = GetComponent<Rigidbody>();
+        playerController = GetComponent<CharacterController>();
         colliders = GetComponents<CapsuleCollider>();
-        playerCollider = colliders[0];
+        //playerCollider = colliders[0];
     }
 
     // Start is called before the first frame update
@@ -66,8 +67,6 @@ public class Player : MonoBehaviour
 
         bool movingForward = false;
         bool movingBackward = false;
-
-        playerRigidbody.AddForce(Physics.gravity * (playerRigidbody.mass * playerRigidbody.mass));
 
         if (Input.GetAxisRaw("Vertical") == 1)
         {
@@ -152,28 +151,6 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        // Pause Game
-        /*if (Input.GetButtonDown("Cancel"))
-        {
-            if (gamePaused == false)
-            {
-                Time.timeScale = 0;
-                gamePaused = true;
-
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-                pauseMenu.SetActive(true);
-            }
-            else
-            {
-                Time.timeScale = 1;
-                gamePaused = false;
-
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
-                pauseMenu.SetActive(false);
-            }
-        }*/
 
         // Open Inventory
         if (Input.GetButtonDown("Inventory"))
@@ -235,9 +212,19 @@ public class Player : MonoBehaviour
 
     void Move(float h, float v)
     {
-        playerRigidbody.transform.Rotate(0, h, 0);
-        playerRigidbody.transform.Translate(0, 0, v);
-        playerRigidbody.velocity = new Vector3(0, 0, 0);
+        if (v != 0)
+        {
+            Vector3 move = new Vector3(0, 0, v);
+
+            move = transform.TransformDirection(move);
+
+            playerController.Move(move);
+        }
+
+        Vector3 turn = new Vector3(0, h, 0);
+
+        transform.Rotate(turn);
+        
     }
 
     void Animating(float h, float v)
