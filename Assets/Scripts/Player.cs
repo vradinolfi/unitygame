@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public float backSpeed = 1.5f;       // The speed that the player will backpedal at.
     public float runSpeed = 6f;             // The speed that the player will run at.
     public float turnSpeed = 150f;          // The speed that the player will turn at.
+    public float gravity = 20f;
     public bool isRunning = false;
     public float maxHealth;
     public float poisonRate;
@@ -32,7 +33,6 @@ public class Player : MonoBehaviour
     CharacterController playerController;
     CapsuleCollider[] colliders;
     CapsuleCollider playerCollider;
-    PlayerControls controls;
     int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
 
     //private GameObject enemy;
@@ -40,7 +40,6 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        controls = new PlayerControls();
         // Create a layer mask for the floor layer.
         floorMask = LayerMask.GetMask("Floor");
 
@@ -48,7 +47,6 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         playerController = GetComponent<CharacterController>();
         colliders = GetComponents<CapsuleCollider>();
-        //playerCollider = colliders[0];
     }
 
     // Start is called before the first frame update
@@ -64,7 +62,7 @@ public class Player : MonoBehaviour
         // Store the input axes.
         float h = Input.GetAxisRaw("Horizontal") * Time.deltaTime * turnSpeed;
         float v = Input.GetAxisRaw("Vertical") * Time.deltaTime * speed;
-
+        
         bool movingForward = false;
         bool movingBackward = false;
 
@@ -119,24 +117,6 @@ public class Player : MonoBehaviour
         // Animate the player.
         Animating(h, v);
 
-        /*
-        ray = new Ray(transform.position + new Vector3(0f, playerCollider.center.y, 0f), transform.forward);
-        Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red); // make sure gizmos are toggled on in viewport
-        
-
-        if (Physics.Raycast(ray, out hit))
-        {
-            if (hit.distance < rayDistance)
-            {
-                //print("We hit something");
-                if (hit.collider.gameObject.tag == "Enemy")
-                {
-                    //print("Enemy sighted");
-                }
-            }
-        }
-        */
-
         if (health <= 0 && !dead)
         {
             Die();
@@ -177,54 +157,32 @@ public class Player : MonoBehaviour
         }
     }
 
-    /*
-    void SetFocus(Interactable newFocus)
-    {
-        if (newFocus != focus)
-        {
-            if (focus != null)
-            {
-                focus.OnDefocused();
-            }
-            focus = newFocus;
-        }
-        newFocus.OnFocused(transform);
-    }
-
-    void RemoveFocus()
-    {
-        if (focus != null)
-        {
-            focus.OnDefocused();
-        }
-        focus = null;
-    }
-    */
-
     private void OnCollisionEnter(Collision collision)
     {
-        /*if(collision.gameObject.tag == "Enemy")
-        {
-            enemyScript = collision.gameObject.GetComponent<Enemy>();
-            enemyScript.enemyHealth -= 25;
-        }*/
+
     }
 
+    
     void Move(float h, float v)
     {
-        if (v != 0)
-        {
-            Vector3 move = new Vector3(0, 0, v);
 
-            move = transform.TransformDirection(move);
+            
+        Vector3 move = new Vector3(0, 0, v);
 
-            playerController.Move(move);
-        }
+        move = transform.TransformDirection(move);
 
+        move.y -= gravity * Time.deltaTime;
+
+        playerController.Move(move);
+
+        Debug.Log(move);
+        
         Vector3 turn = new Vector3(0, h, 0);
 
         transform.Rotate(turn);
-        
+
+        Debug.Log(turn);
+
     }
 
     void Animating(float h, float v)
