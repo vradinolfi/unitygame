@@ -175,13 +175,13 @@ public class Player : MonoBehaviour
 
         playerController.Move(move);
 
-        Debug.Log(move);
+        //Debug.Log(move);
         
         Vector3 turn = new Vector3(0, h, 0);
 
         transform.Rotate(turn);
 
-        Debug.Log(turn);
+        //Debug.Log(turn);
 
     }
 
