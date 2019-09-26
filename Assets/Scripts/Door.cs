@@ -6,14 +6,15 @@ using UnityEngine.UI;
 public class Door : MonoBehaviour
 {
 
-
     public Transform destination;
-    //public string doorText;
+    [Space]
     public bool isLocked;
-
+    public Dialogue dialogue;
+    [Space]
     public GameObject blackScreen;
     public float waitTime = 1f;
 
+    private bool activeDialogue;
     Animator fadeAnim;
     Player player;
     GameManager gameManager;
@@ -32,9 +33,21 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Submit") && !player.isAiming)
+        activeDialogue = dialogue.isActive;
+
+        if (Input.GetButtonDown("Submit") && !player.isAiming && !isLocked)
         {
             StartCoroutine(Teleport());
+        }
+
+        if (Input.GetButtonDown("Submit") && !player.isAiming && isLocked && !activeDialogue)
+        {
+            TriggerDialogue();
+        }
+
+        if (activeDialogue && Input.GetButtonDown("Submit"))
+        {
+            FindObjectOfType<DialogueManager>().DisplayNextSentence(dialogue);
         }
     }
 
@@ -60,6 +73,14 @@ public class Door : MonoBehaviour
 
             blackScreen.SetActive(false);
 
+        }
+    }
+
+    public void TriggerDialogue()
+    {
+        if (interactable)
+        {
+            FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
         }
     }
 
