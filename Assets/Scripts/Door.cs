@@ -139,9 +139,9 @@ public class Door : MonoBehaviour
         {
             interactable = true;
 
-            if (player.transform.Find(doorKey).gameObject) {
+            if (player.transform.Find(doorKey).gameObject.name == doorKey) {
                 hasKey = true;
-                Debug.Log("Has key");
+                Debug.Log("Has " + doorKey);
             }
 
             //Debug.Log("/Player/" + doorKey.name);
