@@ -29,8 +29,6 @@ public class PickupItem : MonoBehaviour
         {
             activeDialogue = dialogue.isActive;
 
-            Debug.Log(activeDialogue);
-
             if (!player.isAiming)
             {
 
