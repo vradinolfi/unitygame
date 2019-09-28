@@ -139,7 +139,7 @@ public class Door : MonoBehaviour
         {
             interactable = true;
 
-            if (player.transform.Find(doorKey).gameObject.name == doorKey) {
+            if (player.transform.Find("Items").Find(doorKey).gameObject.name == doorKey) {
                 hasKey = true;
                 Debug.Log("Has " + doorKey);
             }
