@@ -6,52 +6,47 @@ using TMPro;
 public class PickupItem : MonoBehaviour
 {
 
-    [SerializeField]
-    private TextMeshProUGUI pickUpText;
+    public Dialogue dialogue;
 
-    public bool interactable = false;
+    private bool activeDialogue;
+    bool interactable = false;
+    Player player;
+    GameManager gameManager;
 
-    private Player playerScript;
-
-    //public Animator anim;
-    private bool paused = false;
-    //private GameObject player;
-
-    public bool persistent = false;
-
-    // Start is called before the first frame update
     void Start()
     {
-        pickUpText.gameObject.SetActive(false);
 
-        playerScript = FindObjectOfType<Player>();
+        player = FindObjectOfType<Player>();
+        gameManager = FindObjectOfType<GameManager>();
         
-        //anim = playerScript.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (!playerScript.isAiming && Input.GetButtonDown("Submit"))
+        if (Input.GetButtonDown("Submit"))
         {
-            if (!paused && interactable)
+            activeDialogue = dialogue.isActive;
+
+            Debug.Log(activeDialogue);
+
+            if (!player.isAiming)
             {
-                //playerScript.GetComponent<Animator>().SetBool("IsCrouching", true);
-                paused = true;
-                pickUpText.gameObject.SetActive(true);
-                Time.timeScale = 0f;
-            }
-            else
-            {
-                if (interactable)
+
+                if (!activeDialogue && !gameManager.gamePaused && interactable)
                 {
-                    //playerScript.GetComponent<Animator>().SetBool("IsCrouching", false);
-                    paused = false;
-                    pickUpText.gameObject.SetActive(false);
-                    Time.timeScale = 1f;
+
+                    TriggerDialogue();
+
+                }
+                
+                if (activeDialogue)
+                {
+                    FindObjectOfType<DialogueManager>().DisplayNextSentence(dialogue);
                     PickUp();
                 }
+
             }
 
         }
@@ -60,7 +55,8 @@ public class PickupItem : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.CompareTag("Player")) {
+        if (collision.CompareTag("Player"))
+        {
             interactable = true;
         }
     }
@@ -73,14 +69,17 @@ public class PickupItem : MonoBehaviour
         }
     }
 
+    public void TriggerDialogue()
+    {
+        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        //Debug.Log("Trigger Dialogue");
+    }
+
     void PickUp()
     {
 
-        if (!persistent)
-        {
-            Destroy(gameObject);
-            Destroy(pickUpText);
-        }
+        transform.SetParent(player.transform.Find("Items").transform);
+        gameObject.SetActive(false);
 
         // crouch animation?
 

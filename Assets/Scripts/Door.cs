@@ -9,7 +9,7 @@ public class Door : MonoBehaviour
     public Transform destination;
     [Space]
     public bool isLocked;
-    public string doorKey;
+    public string doorKey = "";
     public Dialogue dialogue;
     public Dialogue unlockText;
     [Space]
@@ -141,10 +141,8 @@ public class Door : MonoBehaviour
 
             if (player.transform.Find("Items").Find(doorKey).gameObject.name == doorKey) {
                 hasKey = true;
-                Debug.Log("Has " + doorKey);
+                //Debug.Log("Has " + doorKey);
             }
-
-            //Debug.Log("/Player/" + doorKey.name);
         }
     }
 

@@ -13,6 +13,8 @@ public class DialogueManager : MonoBehaviour
 
     private Queue<string> sentences;
 
+    bool done;
+
     GameManager gameManager;
 
     void Start()
@@ -23,7 +25,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
-        isBusy = true; //wtf
+        //isBusy = true; //wtf
         dialogue.isActive = true;
         dialogueContainer.SetActive(true);
         gameManager.PauseGame();
@@ -65,12 +67,13 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    void EndDialogue(Dialogue dialogue)
+    public bool EndDialogue(Dialogue dialogue)
     {
         dialogueContainer.SetActive(false);
         dialogue.isActive = false;
         gameManager.UnpauseGame();
-        isBusy = false;
+        //isBusy = false;
+        return true;
     }
 
 }

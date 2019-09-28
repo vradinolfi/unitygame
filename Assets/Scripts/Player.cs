@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     public float maxHealth;
     public float poisonRate;
     public bool isPoisoned;
-    public bool isAiming;
+    public bool isAiming = false;
 
     public float rayDistance = 4f;
     public bool gamePaused = false;
