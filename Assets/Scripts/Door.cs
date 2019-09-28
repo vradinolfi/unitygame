@@ -9,16 +9,28 @@ public class Door : MonoBehaviour
     public Transform destination;
     [Space]
     public bool isLocked;
+    public string doorKey;
     public Dialogue dialogue;
+    public Dialogue unlockText;
     [Space]
     public GameObject blackScreen;
     public float waitTime = 1f;
+    [Space]
+    public AudioClip openSound;
+    public AudioClip closeSound;
+    public AudioClip lockedSound;
+    public AudioClip unlockSound;
 
+    AudioSource doorAudio;
     private bool activeDialogue;
     Animator fadeAnim;
     Player player;
     GameManager gameManager;
+    DialogueManager dialogueManager;
     bool interactable;
+    bool hasKey;
+    bool teleporting;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,27 +39,43 @@ public class Door : MonoBehaviour
         player = FindObjectOfType<Player>();
         gameManager = FindObjectOfType<GameManager>();
         fadeAnim = blackScreen.GetComponent<Animator>();
+        doorAudio = GetComponentInChildren<AudioSource>();
+        dialogueManager = FindObjectOfType<DialogueManager>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        activeDialogue = dialogue.isActive;
-
-        if (Input.GetButtonDown("Submit") && !player.isAiming && !isLocked)
+        
+        if (Input.GetButtonDown("Submit"))
         {
-            StartCoroutine(Teleport());
-        }
+            activeDialogue = dialogue.isActive || unlockText.isActive;
 
-        if (Input.GetButtonDown("Submit") && !player.isAiming && isLocked && !activeDialogue)
-        {
-            TriggerDialogue();
-        }
+            if (!player.isAiming && !isLocked && !activeDialogue && !teleporting)
+            {
+                StartCoroutine(Teleport());
+            }
 
-        if (activeDialogue && Input.GetButtonDown("Submit"))
-        {
-            FindObjectOfType<DialogueManager>().DisplayNextSentence(dialogue);
+            if (!player.isAiming && !hasKey && isLocked && !activeDialogue)
+            {
+                TriggerDialogue();
+            }
+
+            if (isLocked && activeDialogue)
+            {
+                FindObjectOfType<DialogueManager>().DisplayNextSentence(dialogue);
+            }
+
+            if (!player.isAiming && hasKey && isLocked && !activeDialogue)
+            {
+                UnlockDoor();
+            }
+
+            if (!isLocked && activeDialogue)
+            {
+                FindObjectOfType<DialogueManager>().DisplayNextSentence(unlockText);
+            }
         }
     }
 
@@ -55,13 +83,18 @@ public class Door : MonoBehaviour
     {
         if (interactable)
         {
+            teleporting = true;
 
             blackScreen.SetActive(true);
             gameManager.PauseGame();
             fadeAnim.SetBool("isFaded", true);
-
+            doorAudio.clip = openSound;
+            doorAudio.Play();
+            
             yield return new WaitForSecondsRealtime(waitTime);
-
+            //yield return new WaitForSecondsRealtime(doorAudio.clip.length);
+            doorAudio.clip = closeSound;
+            doorAudio.Play();
             gameManager.UnpauseGame();
             player.GetComponent<CharacterController>().enabled = false;
             player.transform.position = destination.transform.Find("EnterPoint").position;
@@ -73,6 +106,8 @@ public class Door : MonoBehaviour
 
             blackScreen.SetActive(false);
 
+            teleporting = false;
+
         }
     }
 
@@ -81,6 +116,20 @@ public class Door : MonoBehaviour
         if (interactable)
         {
             FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+            doorAudio.clip = lockedSound;
+            doorAudio.Play();
+        }
+    }
+
+    public void UnlockDoor()
+    {
+        if (interactable)
+        {
+            isLocked = false;
+            destination.GetComponentInParent<Door>().isLocked = false;
+            doorAudio.clip = unlockSound;
+            doorAudio.Play();
+            FindObjectOfType<DialogueManager>().StartDialogue(unlockText);
         }
     }
 
@@ -89,6 +138,13 @@ public class Door : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             interactable = true;
+
+            if (player.transform.Find(doorKey).gameObject) {
+                hasKey = true;
+                Debug.Log("Has key");
+            }
+
+            //Debug.Log("/Player/" + doorKey.name);
         }
     }
 

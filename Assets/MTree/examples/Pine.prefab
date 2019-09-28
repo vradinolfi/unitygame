@@ -1,0 +1,1702 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1351635606063484}
+  m_IsPrefabParent: 1
+--- !u!1 &1351635606063484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4529623621790294}
+  - component: {fileID: 33217468657431210}
+  - component: {fileID: 23690734890666540}
+  - component: {fileID: 114871942951698902}
+  m_Layer: 0
+  m_Name: Pine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4529623621790294
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1351635606063484}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 23.6, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23690734890666540
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1351635606063484}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 105a20790cfaee246a6230c8fd1e8643, type: 2}
+  - {fileID: 2100000, guid: 6ce9f94d580e4764598eec1ecf6fd092, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &33217468657431210
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1351635606063484}
+  m_Mesh: {fileID: 0}
+--- !u!114 &114871942951698902
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1351635606063484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 347f0cdd7cb1967469a0e0c4182cadf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  treeFunctions:
+  - nodeStyle:
+      m_Name: 
+      m_Normal:
+        m_Background: {fileID: 2800000, guid: 5f71f436cca5101489fbe40df8146a2d, type: 3}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+      m_Hover:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Active:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Focused:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnNormal:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnHover:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnActive:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnFocused:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Border:
+        m_Left: 20
+        m_Right: 10
+        m_Top: 10
+        m_Bottom: 10
+      m_Margin:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Padding:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Overflow:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Font: {fileID: 0}
+      m_FontSize: 0
+      m_FontStyle: 1
+      m_Alignment: 4
+      m_WordWrap: 0
+      m_RichText: 1
+      m_TextClipping: 0
+      m_ImagePosition: 0
+      m_ContentOffset: {x: 0, y: 0}
+      m_FixedWidth: 0
+      m_FixedHeight: 0
+      m_StretchWidth: 1
+      m_StretchHeight: 0
+    selectedNodeStyle:
+      m_Name: 
+      m_Normal:
+        m_Background: {fileID: 2800000, guid: e6953a04438126f4d87e925d57fffbe6, type: 3}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+      m_Hover:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Active:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Focused:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnNormal:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnHover:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnActive:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnFocused:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Border:
+        m_Left: 20
+        m_Right: 10
+        m_Top: 10
+        m_Bottom: 10
+      m_Margin:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Padding:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Overflow:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Font: {fileID: 0}
+      m_FontSize: 0
+      m_FontStyle: 1
+      m_Alignment: 4
+      m_WordWrap: 0
+      m_RichText: 1
+      m_TextClipping: 0
+      m_ImagePosition: 0
+      m_ContentOffset: {x: 0, y: 0}
+      m_FixedWidth: 0
+      m_FixedHeight: 0
+      m_StretchWidth: 1
+      m_StretchHeight: 0
+    deleteButtonStyle:
+      m_Name: 
+      m_Normal:
+        m_Background: {fileID: 2800000, guid: fd8af19349c54814ba6c38c1950b6a9e, type: 3}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Hover:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Active:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Focused:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnNormal:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnHover:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnActive:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnFocused:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Border:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Margin:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Padding:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Overflow:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Font: {fileID: 0}
+      m_FontSize: 0
+      m_FontStyle: 0
+      m_Alignment: 0
+      m_WordWrap: 0
+      m_RichText: 1
+      m_TextClipping: 0
+      m_ImagePosition: 0
+      m_ContentOffset: {x: 0, y: 0}
+      m_FixedWidth: 0
+      m_FixedHeight: 0
+      m_StretchWidth: 1
+      m_StretchHeight: 0
+    seed: 181
+    type: 0
+    id: 0
+    position: 0
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 200
+      height: 37
+    deleteRect:
+      serializedVersion: 2
+      x: 170
+      y: 9
+      width: 18
+      height: 18
+    parentId: -1
+    name: Trunk
+    TradiusMultiplier: 0.2
+    Tradius:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0
+        inSlope: -1
+        outSlope: -1
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    Tlength: 23.54
+    Tnumber: 1
+    Trandomness: 0.032
+    ToriginAttraction: 0.1
+    Tresolution: 1.5
+    TrootShape:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: -2
+        outSlope: -2
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    TrootRadius: 0.749
+    TrootHeight: 1
+    TrootResolution: 3
+    TflareNumber: 5
+    TspinAmount: 0.1
+    TdisplacementStrength: 0.66
+    TdisplacementSize: 0.61
+    TheightOffset: 0.37
+    Glength: 10
+    GlengthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: -0.19999999
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0.8
+        inSlope: -0.19999999
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    Gresolution: 1
+    GsplitProba: 0.1
+    GsplitAngle: 0.5
+    GmaxSplits: 2
+    Gradius:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    GsplitProbaCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.5
+        inSlope: 0
+        outSlope: 0.5
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 0.5
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    GsplitRadius: 0.8
+    Grandomness: 0.25
+    GupAttraction: 0.5
+    GgravityStrength: 0.1
+    Snumber: 15
+    SsplitAngle: 0.5
+    SmaxSplits: 2
+    SsplitRadius: 0.6
+    Sstart: 0
+    Sspread: 1
+    Blength: 7
+    BlengthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: -0.19999999
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0.8
+        inSlope: -0.19999999
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    Bresolution: 1
+    Bnumber: 15
+    BsplitProba: 0.2
+    Bangle: 0.7
+    Brandomness: 0.3
+    Bshape:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: -1
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0
+        inSlope: -1
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    BsplitProbaCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.5
+        inSlope: 0
+        outSlope: 0.5
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 0.5
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    Bradius: 0.7
+    BupAttraction: 0.7
+    Bstart: 0.2
+    BmaxSplits: 4
+    BgravityStrength: 0.1
+    LleafType: 0
+    LleafTypesNames: []
+    LleafMesh:
+    - {fileID: 4300004, guid: 984dcb44177d2ba4083f56fa54dd82ea, type: 3}
+    Lnumber: 100
+    LmaxRadius: 0.1
+    Lsize: 2
+    LoverrideNormals: 1
+    LminWeight: 0.2
+    LmaxWeight: 0.5
+  - nodeStyle:
+      m_Name: 
+      m_Normal:
+        m_Background: {fileID: 2800000, guid: 5f71f436cca5101489fbe40df8146a2d, type: 3}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+      m_Hover:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Active:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Focused:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnNormal:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnHover:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnActive:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnFocused:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Border:
+        m_Left: 20
+        m_Right: 10
+        m_Top: 10
+        m_Bottom: 10
+      m_Margin:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Padding:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Overflow:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Font: {fileID: 0}
+      m_FontSize: 0
+      m_FontStyle: 1
+      m_Alignment: 4
+      m_WordWrap: 0
+      m_RichText: 1
+      m_TextClipping: 0
+      m_ImagePosition: 0
+      m_ContentOffset: {x: 0, y: 0}
+      m_FixedWidth: 0
+      m_FixedHeight: 0
+      m_StretchWidth: 1
+      m_StretchHeight: 0
+    selectedNodeStyle:
+      m_Name: 
+      m_Normal:
+        m_Background: {fileID: 2800000, guid: e6953a04438126f4d87e925d57fffbe6, type: 3}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+      m_Hover:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Active:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Focused:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnNormal:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnHover:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnActive:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnFocused:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Border:
+        m_Left: 20
+        m_Right: 10
+        m_Top: 10
+        m_Bottom: 10
+      m_Margin:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Padding:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Overflow:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Font: {fileID: 0}
+      m_FontSize: 0
+      m_FontStyle: 1
+      m_Alignment: 4
+      m_WordWrap: 0
+      m_RichText: 1
+      m_TextClipping: 0
+      m_ImagePosition: 0
+      m_ContentOffset: {x: 0, y: 0}
+      m_FixedWidth: 0
+      m_FixedHeight: 0
+      m_StretchWidth: 1
+      m_StretchHeight: 0
+    deleteButtonStyle:
+      m_Name: 
+      m_Normal:
+        m_Background: {fileID: 2800000, guid: fd8af19349c54814ba6c38c1950b6a9e, type: 3}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Hover:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Active:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Focused:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnNormal:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnHover:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnActive:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnFocused:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Border:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Margin:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Padding:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Overflow:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Font: {fileID: 0}
+      m_FontSize: 0
+      m_FontStyle: 0
+      m_Alignment: 0
+      m_WordWrap: 0
+      m_RichText: 1
+      m_TextClipping: 0
+      m_ImagePosition: 0
+      m_ContentOffset: {x: 0, y: 0}
+      m_FixedWidth: 0
+      m_FixedHeight: 0
+      m_StretchWidth: 1
+      m_StretchHeight: 0
+    seed: 675
+    type: 3
+    id: 1
+    position: 30
+    rect:
+      serializedVersion: 2
+      x: 30
+      y: 34
+      width: 200
+      height: 37
+    deleteRect:
+      serializedVersion: 2
+      x: 200
+      y: 43
+      width: 18
+      height: 18
+    parentId: 0
+    name: Branch
+    TradiusMultiplier: 0.3
+    Tradius:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    Tlength: 10
+    Tnumber: 1
+    Trandomness: 0.1
+    ToriginAttraction: 0.1
+    Tresolution: 1.5
+    TrootShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    TrootRadius: 0.25
+    TrootHeight: 1
+    TrootResolution: 3
+    TflareNumber: 5
+    TspinAmount: 0.1
+    TdisplacementStrength: 0
+    TdisplacementSize: 0
+    TheightOffset: 0
+    Glength: 10
+    GlengthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: -0.19999999
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0.8
+        inSlope: -0.19999999
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    Gresolution: 1
+    GsplitProba: 0.1
+    GsplitAngle: 0.5
+    GmaxSplits: 2
+    Gradius:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    GsplitProbaCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.5
+        inSlope: 0
+        outSlope: 0.5
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 0.5
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    GsplitRadius: 0.8
+    Grandomness: 0.25
+    GupAttraction: 0.5
+    GgravityStrength: 0.1
+    Snumber: 15
+    SsplitAngle: 0.5
+    SmaxSplits: 2
+    SsplitRadius: 0.6
+    Sstart: 0
+    Sspread: 1
+    Blength: 4.72
+    BlengthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.9469604
+        value: 0.005236
+        inSlope: -0.2516133
+        outSlope: -0.2516133
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    Bresolution: 0.48
+    Bnumber: 22
+    BsplitProba: 0.15
+    Bangle: 1.675
+    Brandomness: 0.096
+    Bshape:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: -1
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0
+        inSlope: -1
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    BsplitProbaCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.5
+        inSlope: 0
+        outSlope: 0.5
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 0.5
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    Bradius: 0.411
+    BupAttraction: 0.7
+    Bstart: 0.291
+    BmaxSplits: 4
+    BgravityStrength: -2.22
+    LleafType: 0
+    LleafTypesNames: []
+    LleafMesh:
+    - {fileID: 4300004, guid: 984dcb44177d2ba4083f56fa54dd82ea, type: 3}
+    Lnumber: 100
+    LmaxRadius: 0.1
+    Lsize: 2
+    LoverrideNormals: 1
+    LminWeight: 0.2
+    LmaxWeight: 0.5
+  - nodeStyle:
+      m_Name: 
+      m_Normal:
+        m_Background: {fileID: 2800000, guid: 5f71f436cca5101489fbe40df8146a2d, type: 3}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+      m_Hover:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Active:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Focused:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnNormal:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnHover:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnActive:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnFocused:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Border:
+        m_Left: 20
+        m_Right: 10
+        m_Top: 10
+        m_Bottom: 10
+      m_Margin:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Padding:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Overflow:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Font: {fileID: 0}
+      m_FontSize: 0
+      m_FontStyle: 1
+      m_Alignment: 4
+      m_WordWrap: 0
+      m_RichText: 1
+      m_TextClipping: 0
+      m_ImagePosition: 0
+      m_ContentOffset: {x: 0, y: 0}
+      m_FixedWidth: 0
+      m_FixedHeight: 0
+      m_StretchWidth: 1
+      m_StretchHeight: 0
+    selectedNodeStyle:
+      m_Name: 
+      m_Normal:
+        m_Background: {fileID: 2800000, guid: e6953a04438126f4d87e925d57fffbe6, type: 3}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+      m_Hover:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Active:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Focused:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnNormal:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnHover:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnActive:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnFocused:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Border:
+        m_Left: 20
+        m_Right: 10
+        m_Top: 10
+        m_Bottom: 10
+      m_Margin:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Padding:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Overflow:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Font: {fileID: 0}
+      m_FontSize: 0
+      m_FontStyle: 1
+      m_Alignment: 4
+      m_WordWrap: 0
+      m_RichText: 1
+      m_TextClipping: 0
+      m_ImagePosition: 0
+      m_ContentOffset: {x: 0, y: 0}
+      m_FixedWidth: 0
+      m_FixedHeight: 0
+      m_StretchWidth: 1
+      m_StretchHeight: 0
+    deleteButtonStyle:
+      m_Name: 
+      m_Normal:
+        m_Background: {fileID: 2800000, guid: fd8af19349c54814ba6c38c1950b6a9e, type: 3}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Hover:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Active:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Focused:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnNormal:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnHover:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnActive:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnFocused:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Border:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Margin:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Padding:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Overflow:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Font: {fileID: 0}
+      m_FontSize: 0
+      m_FontStyle: 0
+      m_Alignment: 0
+      m_WordWrap: 0
+      m_RichText: 1
+      m_TextClipping: 0
+      m_ImagePosition: 0
+      m_ContentOffset: {x: 0, y: 0}
+      m_FixedWidth: 0
+      m_FixedHeight: 0
+      m_StretchWidth: 1
+      m_StretchHeight: 0
+    seed: 851
+    type: 4
+    id: 2
+    position: 60
+    rect:
+      serializedVersion: 2
+      x: 60
+      y: 68
+      width: 200
+      height: 37
+    deleteRect:
+      serializedVersion: 2
+      x: 230
+      y: 77
+      width: 18
+      height: 18
+    parentId: 1
+    name: Leaf
+    TradiusMultiplier: 0.3
+    Tradius:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    Tlength: 10
+    Tnumber: 1
+    Trandomness: 0.1
+    ToriginAttraction: 0.1
+    Tresolution: 1.5
+    TrootShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    TrootRadius: 0.25
+    TrootHeight: 1
+    TrootResolution: 3
+    TflareNumber: 5
+    TspinAmount: 0.1
+    TdisplacementStrength: 0
+    TdisplacementSize: 0
+    TheightOffset: 0
+    Glength: 10
+    GlengthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: -0.19999999
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0.8
+        inSlope: -0.19999999
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    Gresolution: 1
+    GsplitProba: 0.1
+    GsplitAngle: 0.5
+    GmaxSplits: 2
+    Gradius:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    GsplitProbaCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.5
+        inSlope: 0
+        outSlope: 0.5
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 0.5
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    GsplitRadius: 0.8
+    Grandomness: 0.25
+    GupAttraction: 0.5
+    GgravityStrength: 0.1
+    Snumber: 15
+    SsplitAngle: 0.5
+    SmaxSplits: 2
+    SsplitRadius: 0.6
+    Sstart: 0
+    Sspread: 1
+    Blength: 7
+    BlengthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: -0.19999999
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0.8
+        inSlope: -0.19999999
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    Bresolution: 1
+    Bnumber: 15
+    BsplitProba: 0.2
+    Bangle: 0.7
+    Brandomness: 0.3
+    Bshape:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: -1
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0
+        inSlope: -1
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    BsplitProbaCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.5
+        inSlope: 0
+        outSlope: 0.5
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 0.5
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    Bradius: 0.7
+    BupAttraction: 0.7
+    Bstart: 0.2
+    BmaxSplits: 4
+    BgravityStrength: 0.1
+    LleafType: 3
+    LleafTypesNames: []
+    LleafMesh:
+    - {fileID: 4300002, guid: 984dcb44177d2ba4083f56fa54dd82ea, type: 3}
+    - {fileID: 4300000, guid: 984dcb44177d2ba4083f56fa54dd82ea, type: 3}
+    Lnumber: 344
+    LmaxRadius: 0.291
+    Lsize: 1.88
+    LoverrideNormals: 1
+    LminWeight: 0.16002208
+    LmaxWeight: 0.36320582
+  - nodeStyle:
+      m_Name: 
+      m_Normal:
+        m_Background: {fileID: 2800000, guid: 5f71f436cca5101489fbe40df8146a2d, type: 3}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+      m_Hover:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Active:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Focused:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnNormal:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnHover:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnActive:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnFocused:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Border:
+        m_Left: 20
+        m_Right: 10
+        m_Top: 10
+        m_Bottom: 10
+      m_Margin:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Padding:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Overflow:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Font: {fileID: 0}
+      m_FontSize: 0
+      m_FontStyle: 1
+      m_Alignment: 4
+      m_WordWrap: 0
+      m_RichText: 1
+      m_TextClipping: 0
+      m_ImagePosition: 0
+      m_ContentOffset: {x: 0, y: 0}
+      m_FixedWidth: 0
+      m_FixedHeight: 0
+      m_StretchWidth: 1
+      m_StretchHeight: 0
+    selectedNodeStyle:
+      m_Name: 
+      m_Normal:
+        m_Background: {fileID: 2800000, guid: e6953a04438126f4d87e925d57fffbe6, type: 3}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 1, g: 1, b: 1, a: 1}
+      m_Hover:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Active:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Focused:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnNormal:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnHover:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnActive:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnFocused:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Border:
+        m_Left: 20
+        m_Right: 10
+        m_Top: 10
+        m_Bottom: 10
+      m_Margin:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Padding:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Overflow:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Font: {fileID: 0}
+      m_FontSize: 0
+      m_FontStyle: 1
+      m_Alignment: 4
+      m_WordWrap: 0
+      m_RichText: 1
+      m_TextClipping: 0
+      m_ImagePosition: 0
+      m_ContentOffset: {x: 0, y: 0}
+      m_FixedWidth: 0
+      m_FixedHeight: 0
+      m_StretchWidth: 1
+      m_StretchHeight: 0
+    deleteButtonStyle:
+      m_Name: 
+      m_Normal:
+        m_Background: {fileID: 2800000, guid: fd8af19349c54814ba6c38c1950b6a9e, type: 3}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Hover:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Active:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Focused:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnNormal:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnHover:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnActive:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_OnFocused:
+        m_Background: {fileID: 0}
+        m_ScaledBackgrounds: []
+        m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+      m_Border:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Margin:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Padding:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Overflow:
+        m_Left: 0
+        m_Right: 0
+        m_Top: 0
+        m_Bottom: 0
+      m_Font: {fileID: 0}
+      m_FontSize: 0
+      m_FontStyle: 0
+      m_Alignment: 0
+      m_WordWrap: 0
+      m_RichText: 1
+      m_TextClipping: 0
+      m_ImagePosition: 0
+      m_ContentOffset: {x: 0, y: 0}
+      m_FixedWidth: 0
+      m_FixedHeight: 0
+      m_StretchWidth: 1
+      m_StretchHeight: 0
+    seed: 442
+    type: 3
+    id: 0
+    position: 30
+    rect:
+      serializedVersion: 2
+      x: 30
+      y: 102
+      width: 200
+      height: 37
+    deleteRect:
+      serializedVersion: 2
+      x: 200
+      y: 111
+      width: 18
+      height: 18
+    parentId: 0
+    name: Branch
+    TradiusMultiplier: 0.3
+    Tradius:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    Tlength: 10
+    Tnumber: 1
+    Trandomness: 0.1
+    ToriginAttraction: 0.1
+    Tresolution: 1.5
+    TrootShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    TrootRadius: 0.25
+    TrootHeight: 1
+    TrootResolution: 3
+    TflareNumber: 5
+    TspinAmount: 0.1
+    TdisplacementStrength: 1
+    TdisplacementSize: 2.5
+    TheightOffset: 0.5
+    Glength: 10
+    GlengthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: -0.19999999
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0.8
+        inSlope: -0.19999999
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    Gresolution: 1
+    GsplitProba: 0.1
+    GsplitAngle: 0.5
+    GmaxSplits: 2
+    Gradius:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    GsplitProbaCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.5
+        inSlope: 0
+        outSlope: 0.5
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 0.5
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    GsplitRadius: 0.8
+    Grandomness: 0.25
+    GupAttraction: 0.5
+    GgravityStrength: 0.1
+    Snumber: 15
+    SsplitAngle: 0.5
+    SmaxSplits: 2
+    SsplitRadius: 0.6
+    Sstart: 0.2
+    Sspread: 1
+    Blength: 0.74
+    BlengthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: -0.19999999
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0.8
+        inSlope: -0.19999999
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    Bresolution: 3.43
+    Bnumber: 8
+    BsplitProba: 0.2
+    Bangle: 2
+    Brandomness: 0.3
+    Bshape:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: -1
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0
+        inSlope: -1
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    BsplitProbaCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0.5
+        inSlope: 0
+        outSlope: 0.5
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 0.5
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    Bradius: 0.155
+    BupAttraction: 0.7
+    Bstart: 0.026
+    BmaxSplits: 4
+    BgravityStrength: 0.1
+    LleafType: 0
+    LleafTypesNames: []
+    LleafMesh:
+    - {fileID: 4300004, guid: 984dcb44177d2ba4083f56fa54dd82ea, type: 3}
+    Lnumber: 100
+    LmaxRadius: 0.1
+    Lsize: 2
+    LoverrideNormals: 1
+    LminWeight: 0.2
+    LmaxWeight: 0.5
+  selectedFunctionIndex: 2
+  Lod: 0
+  radialResolution:
+  - 1
+  - 0.5
+  - 0.25
+  - 0.1
+  simplifyAngleThreshold:
+  - 3
+  - 10
+  - 20
+  - 30
+  simplifyRadiusThreshold:
+  - 0
+  - 0.01
+  - 0.05
+  - 0.1
+  simplifyLeafs:
+  - 0
+  - 0.2
+  - 0.4
+  - 0.6
+  saveTreeFolder: Assets
+  polycount: 5497
+  MtreeVersion: 2_0

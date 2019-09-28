@@ -24,6 +24,7 @@ public class DialogueTrigger : MonoBehaviour
         if (!player.isAiming && Input.GetButtonDown("Submit") && isInRange && !activeDialogue)
         {
             TriggerDialogue();
+            //Debug.Log("Submit");
         }
 
         if (activeDialogue && Input.GetButtonDown("Submit"))
@@ -51,6 +52,7 @@ public class DialogueTrigger : MonoBehaviour
     public void TriggerDialogue()
     {
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        //Debug.Log("Trigger Dialogue");
     }
 
 }

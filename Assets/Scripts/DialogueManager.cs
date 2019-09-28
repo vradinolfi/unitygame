@@ -9,6 +9,8 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialogueContainer;
     public TextMeshProUGUI dialogueText;
 
+    public bool isBusy;
+
     private Queue<string> sentences;
 
     GameManager gameManager;
@@ -21,6 +23,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        isBusy = true; //wtf
         dialogue.isActive = true;
         dialogueContainer.SetActive(true);
         gameManager.PauseGame();
@@ -67,6 +70,7 @@ public class DialogueManager : MonoBehaviour
         dialogueContainer.SetActive(false);
         dialogue.isActive = false;
         gameManager.UnpauseGame();
+        isBusy = false;
     }
 
 }
