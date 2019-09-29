@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 8744879411729974442, guid: f151cd33166a8704682ca1e91d87c041, type: 3}
   type: 0
+  properName: Green Herb
   Description: Has minor healing properties.
   restoreHealthValue: 50

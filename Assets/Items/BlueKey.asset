@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 8744879411729974442, guid: 55612cf24ee374945b9f2a27982d13c9, type: 3}
   type: 2
+  properName: Blue Key
   Description: A small, ornate key with a blue emblem.

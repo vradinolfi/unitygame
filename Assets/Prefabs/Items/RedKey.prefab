@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 8744879411729974421}
   - component: {fileID: 8744879411729974423}
   - component: {fileID: 8744879411729974420}
+  - component: {fileID: 632746919234226088}
   m_Layer: 5
-  m_Name: BlueKey
+  m_Name: RedKey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,6 +74,19 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &632746919234226088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8744879411729974442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7542fc3699289df49b57416a8ebc9fc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  database: {fileID: 11400000, guid: f767cb995da82084bba5b88f3387c571, type: 2}
 --- !u!1 &8744879412172774519
 GameObject:
   m_ObjectHideFlags: 0

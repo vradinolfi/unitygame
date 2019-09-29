@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   type: 1
+  properName: 
   Description: Well-known military pistol.
   attackValue: 20
