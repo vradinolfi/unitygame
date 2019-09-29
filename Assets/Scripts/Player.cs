@@ -11,16 +11,21 @@ public class Player : MonoBehaviour
     public float runSpeed = 6f;             // The speed that the player will run at.
     public float turnSpeed = 150f;          // The speed that the player will turn at.
     public float gravity = 20f;
-    public bool isRunning = false;
+    public float rayDistance = 4f;
     public float maxHealth;
+    [Space]
+    public bool isRunning = false;
     public float poisonRate;
     public bool isPoisoned;
     public bool isAiming = false;
 
-    public float rayDistance = 4f;
     public bool gamePaused = false;
+    [Space]
     public GameObject pauseMenu;
-    public GameObject inventory;
+    public GameObject inventoryUI;
+    public InventoryObject inventory;
+
+    [Space]
 
     public float health;
 
@@ -142,7 +147,7 @@ public class Player : MonoBehaviour
 
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
-                inventory.SetActive(true);
+                inventoryUI.SetActive(true);
             }
             else
             {
@@ -152,8 +157,18 @@ public class Player : MonoBehaviour
 
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
-                inventory.SetActive(false);
+                inventoryUI.SetActive(false);
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            inventory.Save();
+        }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            inventory.Load();
         }
     }
 
@@ -162,7 +177,25 @@ public class Player : MonoBehaviour
 
     }
 
-    
+
+
+    public void OnTriggerEnter(Collider other)
+    {
+        var item = other.GetComponent<Item>();
+        if (item)
+        {
+            inventory.AddItem(item.item, 1);
+            Destroy(other.gameObject);
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        inventory.Container.Clear();
+    }
+
+
+
     void Move(float h, float v)
     {
 
@@ -201,6 +234,9 @@ public class Player : MonoBehaviour
         //anim.SetBool("IsWalkingBackwards", walkingBackwards);
         anim.SetBool("IsRunning", isRunning);
     }
+
+
+
 
     public void Heal(float healValue)
     {
