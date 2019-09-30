@@ -5,20 +5,22 @@ using TMPro;
 
 public class PickupItem : MonoBehaviour
 {
-
+    
     public Dialogue dialogue;
 
-    private bool activeDialogue;
+    bool activeDialogue;
     bool interactable = false;
     Player player;
     GameManager gameManager;
+    Item item;
 
     void Start()
     {
 
         player = FindObjectOfType<Player>();
         gameManager = FindObjectOfType<GameManager>();
-        
+        item = GetComponent<Item>();
+
     }
 
     // Update is called once per frame
@@ -27,27 +29,28 @@ public class PickupItem : MonoBehaviour
 
         if (Input.GetButtonDown("Submit"))
         {
-            activeDialogue = dialogue.isActive;
 
-            if (!player.isAiming)
-            {
+                activeDialogue = dialogue.isActive;
 
-                if (!activeDialogue && !gameManager.gamePaused && interactable)
+                if (!player.isAiming)
                 {
 
-                    TriggerDialogue();
+                    if (!activeDialogue && !gameManager.gamePaused && interactable)
+                    {
 
-                }
-                
-                if (activeDialogue)
-                {
-                    FindObjectOfType<DialogueManager>().DisplayNextSentence(dialogue);
-                    PickUp();
+                        TriggerDialogue(dialogue);
+
+                    }
+
+                    if (activeDialogue)
+                    {
+                        FindObjectOfType<DialogueManager>().DisplayNextSentence(dialogue);
+                        PickUp();
+                    }
+
                 }
 
             }
-
-        }
 
     }
 
@@ -67,7 +70,7 @@ public class PickupItem : MonoBehaviour
         }
     }
 
-    public void TriggerDialogue()
+    public void TriggerDialogue(Dialogue dialogue)
     {
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
         //Debug.Log("Trigger Dialogue");
@@ -75,8 +78,8 @@ public class PickupItem : MonoBehaviour
 
     void PickUp()
     {
-
-        transform.SetParent(player.transform.Find("Items").transform);
+        
+        player.inventory.AddItem(item.item, 1);
         gameObject.SetActive(false);
 
         // crouch animation?

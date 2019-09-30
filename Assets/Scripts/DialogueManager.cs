@@ -69,11 +69,19 @@ public class DialogueManager : MonoBehaviour
 
     public bool EndDialogue(Dialogue dialogue)
     {
-        dialogueContainer.SetActive(false);
-        dialogue.isActive = false;
-        gameManager.UnpauseGame();
-        //isBusy = false;
-        return true;
+        if (dialogue.needsConfirmation)
+        {
+            return true;
+        }
+        else
+        {
+            dialogueContainer.SetActive(false);
+            dialogue.isActive = false;
+            gameManager.UnpauseGame();
+            //isBusy = false;
+            return true;
+        }
+        
     }
 
 }

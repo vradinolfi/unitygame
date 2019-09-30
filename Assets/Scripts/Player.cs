@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
     private RaycastHit hit;
     private Ray ray;
 
+    Item item;
     Animator anim;                      // Reference to the animator component.
     //Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
     CharacterController playerController;
@@ -170,6 +171,7 @@ public class Player : MonoBehaviour
         {
             inventory.Load();
         }
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -178,16 +180,25 @@ public class Player : MonoBehaviour
     }
 
 
-
+    /*
     public void OnTriggerEnter(Collider other)
     {
-        var item = other.GetComponent<Item>();
+        item = other.GetComponent<Item>();
+
         if (item)
         {
-            inventory.AddItem(item.item, 1);
-            Destroy(other.gameObject);
+            //inventory.AddItem(item.item, 1);
+            //Destroy(other.gameObject);
         }
     }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (item)
+        {
+            item = null;
+        }
+    }*/
 
     private void OnApplicationQuit()
     {

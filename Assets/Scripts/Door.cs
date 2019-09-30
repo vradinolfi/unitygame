@@ -9,6 +9,7 @@ public class Door : MonoBehaviour
     public Transform destination;
     [Space]
     public bool isLocked;
+    public bool unlockOnInteract;
     public string doorKey = "";
     public Dialogue dialogue;
     public Dialogue unlockText;
@@ -50,6 +51,11 @@ public class Door : MonoBehaviour
         
         if (Input.GetButtonDown("Submit"))
         {
+            if (unlockOnInteract)
+            {
+                hasKey = true;
+            }
+
             activeDialogue = dialogue.isActive || unlockText.isActive;
 
             if (!player.isAiming && !isLocked && !activeDialogue && !teleporting)

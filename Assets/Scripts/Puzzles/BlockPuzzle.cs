@@ -12,6 +12,10 @@ public class BlockPuzzle : MonoBehaviour
     bool hasItems;
     bool activeDialogue;
 
+    bool green;
+    bool yellow;
+    bool purple;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,11 +32,8 @@ public class BlockPuzzle : MonoBehaviour
 
             if (!activeDialogue && interactable && !player.isAiming)
             {
-                if (player.transform.Find("Items").Find("GreenBlock").name == "GreenBlock" &&
-                    player.transform.Find("Items").Find("YellowBlock").name == "YellowBlock" &&
-                    player.transform.Find("Items").Find("PurpleBlock").name == "PurpleBlock")
+                if (hasItems)
                 {
-                    hasItems = true;
 
                     GetComponent<DialogueTrigger>().enabled = false;
 
@@ -59,6 +60,31 @@ public class BlockPuzzle : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             interactable = true;
+
+            for (int i = 0; i < player.inventory.Container.Count; i++)
+            {
+                if (player.inventory.Container[i].item.name == "GreenBlock")
+                {
+                    green = true;
+                }
+                if (player.inventory.Container[i].item.name == "YellowBlock")
+                {
+                    yellow = true;
+                }
+                if (player.inventory.Container[i].item.name == "PurpleBlock")
+                {
+                    purple = true;
+                }
+            }
+
+            if(green && purple && yellow)
+            {
+                hasItems = true;
+            }
+            else
+            {
+                hasItems = false;
+            }
 
         }
     }

@@ -13,4 +13,6 @@ public class Dialogue
 
     public bool isActive;
 
+    public bool needsConfirmation;
+
 }

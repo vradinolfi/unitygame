@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class ItemSlot : MonoBehaviour, IPointerClickHandler
+public class ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
 
     public ItemDatabaseObject database;
@@ -27,14 +27,20 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
 
+        
+
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
         nameTooltip.gameObject.SetActive(true);
         descTooltip.gameObject.SetActive(true);
 
         var name = this.name;
 
-        name = name.Replace("(Clone)","");
+        name = name.Replace("(Clone)", "");
 
-        for (int i=0; i < database.Items.Length; i++)
+        for (int i = 0; i < database.Items.Length; i++)
         {
 
             if (database.Items[i].name == name)
@@ -43,6 +49,11 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
                 descTooltip.text = database.Items[i].Description;
             }
         }
+    }
 
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        nameTooltip.gameObject.SetActive(false);
+        descTooltip.gameObject.SetActive(false);
     }
 }
