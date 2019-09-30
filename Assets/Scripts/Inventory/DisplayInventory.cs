@@ -8,12 +8,16 @@ public class DisplayInventory : MonoBehaviour
 
     public InventoryObject inventory;
 
+    Player player;
+
     Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
         CreateDisplay();
+
+        player = FindObjectOfType<Player>();
     }
 
     // Update is called once per frame
@@ -56,6 +60,12 @@ public class DisplayInventory : MonoBehaviour
                     itemsDisplayed.Remove(inventory.Container[i]);
                     inventory.Container.RemoveAt(i);
 
+                }
+
+                if (inventory.Container[i].item.name == "Beretta92FS")
+                {
+                    itemsDisplayed[inventory.Container[i]].GetComponentInChildren<TextMeshProUGUI>().text = player.GetComponent<Gun>().currentAmmo.ToString();
+                    itemsDisplayed[inventory.Container[i]].GetComponentInChildren<TextMeshProUGUI>().enabled = true;
                 }
             }
             else

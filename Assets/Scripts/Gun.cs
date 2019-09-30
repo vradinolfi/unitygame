@@ -11,7 +11,7 @@ public class Gun : MonoBehaviour
     private float nextTimeToFire = 0f;
 
     public int maxAmmo = 15;
-    private int currentAmmo;
+    public int currentAmmo;
     private int availableAmmo;
     public float reloadTime = 1f;
     private bool isReloading = false;
@@ -43,7 +43,6 @@ public class Gun : MonoBehaviour
         anim = player.GetComponent<Animator>();
 
         //currentAmmo = maxAmmo;
-        currentAmmo = 0;
     }
 
     private void OnEnable()
@@ -57,14 +56,14 @@ public class Gun : MonoBehaviour
 
         for (int i = 0; i < player.inventory.Container.Count; i++)
         {
-            if (player.inventory.Container[i].item.name == "Beretta92FS")
+            /*if (player.inventory.Container[i].item.name == "Beretta92FS")
             {
                 equipPistol = true;
-            }
+            }*/
 
             if (player.inventory.Container[i].item.name == "9mm")
             {
-                availableAmmo = player.inventory.Container[i].amount;
+                availableAmmo += player.inventory.Container[i].amount;
             } else
             {
                 availableAmmo = 0;
