@@ -78,8 +78,15 @@ public class PickupItem : MonoBehaviour
 
     void PickUp()
     {
-        
-        player.inventory.AddItem(item.item, 1);
+        if (item.item.amount > 1)
+        {
+            player.inventory.AddItem(item.item, item.item.amount);
+        }
+        else
+        {
+            player.inventory.AddItem(item.item, 1);
+        }
+
         gameObject.SetActive(false);
 
         // crouch animation?

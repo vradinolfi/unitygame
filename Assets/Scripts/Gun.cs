@@ -12,6 +12,7 @@ public class Gun : MonoBehaviour
 
     public int maxAmmo = 15;
     private int currentAmmo;
+    private int availableAmmo;
     public float reloadTime = 1f;
     private bool isReloading = false;
 
@@ -26,6 +27,7 @@ public class Gun : MonoBehaviour
     public AudioClip shotSound3;
     public AudioClip shotSound4;
     public AudioClip reloadSound;
+    public AudioClip dryfireSound;
 
     private AudioClip currentClip;
     private CharacterController playerController;
@@ -40,8 +42,8 @@ public class Gun : MonoBehaviour
         playerController = player.GetComponent<CharacterController>();
         anim = player.GetComponent<Animator>();
 
-        currentAmmo = maxAmmo;
-
+        //currentAmmo = maxAmmo;
+        currentAmmo = 0;
     }
 
     private void OnEnable()
@@ -52,8 +54,25 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (equipPistol == true)
-        //{
+
+        for (int i = 0; i < player.inventory.Container.Count; i++)
+        {
+            if (player.inventory.Container[i].item.name == "Beretta92FS")
+            {
+                equipPistol = true;
+            }
+
+            if (player.inventory.Container[i].item.name == "9mm")
+            {
+                availableAmmo = player.inventory.Container[i].amount;
+            } else
+            {
+                availableAmmo = 0;
+            }
+        }
+
+        if (equipPistol == true)
+        {
 
             if (Input.GetButton("Aim"))
             {
@@ -78,7 +97,7 @@ public class Gun : MonoBehaviour
                 Shoot();
             }
 
-        //}
+        }
 
         //ray = new Ray(player.transform.position + new Vector3(0f, playerCollider.center.y, 0f), player.transform.forward);
 
@@ -105,49 +124,68 @@ public class Gun : MonoBehaviour
 
     void Shoot()
     {
+        
         if (currentAmmo <= 0)
         {
-            StartCoroutine(Reload());
-            return;
-        }
-
-        currentAmmo--;
-
-        muzzleFlash.Play();
-
-        int rand = Random.Range(0, 3);
-        if (rand == 0)
-        {
-            currentClip = shotSound1;
-        }
-        else if (rand == 1)
-        {
-            currentClip = shotSound2;
-        }
-        else if (rand == 2)
-        {
-            currentClip = shotSound3;
-        }
-        else if (rand == 3)
-        {
-            currentClip = shotSound4;
-        }
-
-        shotSound.clip = currentClip;
-
-        shotSound.Play();
-
-        if (Physics.Raycast(player.transform.position + new Vector3(0f, playerController.center.y, 0f), player.transform.forward, out hit, range))
-        {
-            //Debug.Log(hit.transform.name);
-
-            Enemy enemy = hit.transform.GetComponent<Enemy>();
-
-            if (enemy != null)
+            if (availableAmmo > 0)
             {
-                enemy.TakeDamage(damage);
+                StartCoroutine(Reload());
+                return;
+            }
+            else
+            {
+                Debug.Log("Out of ammo.");
+                shotSound.clip = dryfireSound;
+
+                shotSound.Play();
             }
         }
+
+        if (currentAmmo > 0)
+        {
+
+            currentAmmo--;
+
+            muzzleFlash.Play();
+
+            int rand = Random.Range(0, 3);
+            if (rand == 0)
+            {
+                currentClip = shotSound1;
+            }
+            else if (rand == 1)
+            {
+                currentClip = shotSound2;
+            }
+            else if (rand == 2)
+            {
+                currentClip = shotSound3;
+            }
+            else if (rand == 3)
+            {
+                currentClip = shotSound4;
+            }
+
+            shotSound.clip = currentClip;
+
+            shotSound.Play();
+
+            if (Physics.Raycast(player.transform.position + new Vector3(0f, playerController.center.y, 0f), player.transform.forward, out hit, range))
+            {
+                //Debug.Log(hit.transform.name);
+
+                Enemy enemy = hit.transform.GetComponent<Enemy>();
+
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(damage);
+                }
+            }
+
+        }
+
+        Debug.Log(currentAmmo);
+        Debug.Log(availableAmmo);
 
     }
 
@@ -163,7 +201,25 @@ public class Gun : MonoBehaviour
 
         yield return new WaitForSeconds(reloadTime);
 
-        currentAmmo = maxAmmo;
+        if (availableAmmo - maxAmmo < 0)
+        {
+            currentAmmo = availableAmmo;
+            availableAmmo = 0;
+
+        }
+        else
+        {
+            availableAmmo -= 15;
+            currentAmmo = maxAmmo;
+        }
+
+        for (int i = 0; i < player.inventory.Container.Count; i++)
+        {
+            if (player.inventory.Container[i].item.name == "9mm")
+            {
+                player.inventory.Container[i].amount = availableAmmo;
+            }
+        }
 
         isReloading = false;
     }

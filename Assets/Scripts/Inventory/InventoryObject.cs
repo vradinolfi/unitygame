@@ -40,6 +40,11 @@ public class InventoryObject : ScriptableObject, ISerializationCallbackReceiver
 
     }
 
+    public void RemoveItem(ItemObject item)
+    {
+        //Container.Remove(item);
+    }
+
     public void Save()
     {
         string saveData = JsonUtility.ToJson(this, true);

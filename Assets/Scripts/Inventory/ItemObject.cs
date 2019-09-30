@@ -18,5 +18,6 @@ public abstract class ItemObject : ScriptableObject
     public string properName;
     [TextArea(3,10)]
     public string Description;
+    public int amount = 1;
 
 }

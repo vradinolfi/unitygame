@@ -48,6 +48,15 @@ public class DisplayInventory : MonoBehaviour
                 {
                     itemsDisplayed[inventory.Container[i]].GetComponentInChildren<TextMeshProUGUI>().enabled = true;
                 }
+
+                if (inventory.Container[i].item.name == "9mm" && inventory.Container[i].amount == 0)
+                {
+
+                    Destroy(itemsDisplayed[inventory.Container[i]].gameObject);
+                    itemsDisplayed.Remove(inventory.Container[i]);
+                    inventory.Container.RemoveAt(i);
+
+                }
             }
             else
             {

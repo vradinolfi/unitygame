@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d3532a5cfe0e5940be9d6d3ad6e2799, type: 3}
+  m_Name: 9mm
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 8744879411729974442, guid: 066468909c960584596e3d55513d42c2, type: 3}
+  type: 0
+  properName: 9mm Rounds
+  Description: Ammunition for the pistol.
+  amount: 15
+  restoreHealthValue: 0
