@@ -20,10 +20,14 @@ public class FootStepSound : MonoBehaviour
     private AudioClip currentClip;
     private bool couroutineOn;
 
+    Player player;
+
     void Start()
     {
 
         anim = this.gameObject.GetComponent<Animator>();
+
+        player = FindObjectOfType<Player>();
 
         couroutineOn = true;
         audioSource.clip = defaultClip;
@@ -37,7 +41,7 @@ public class FootStepSound : MonoBehaviour
         while (couroutineOn == true)
         {
 
-            if (anim.GetCurrentAnimatorStateInfo(0).IsName("HumanoidRun") || anim.GetCurrentAnimatorStateInfo(0).IsName("HumanoidWalk") || anim.GetCurrentAnimatorStateInfo(0).IsName("Stealth"))
+            if (!player.isAiming && player.isWalking || player.isRunning || anim.GetCurrentAnimatorStateInfo(0).IsName("HumanoidRun") || anim.GetCurrentAnimatorStateInfo(0).IsName("HumanoidWalk") || anim.GetCurrentAnimatorStateInfo(0).IsName("Stealth"))
             {
 
                 int rand = Random.Range(0, 4);
@@ -74,11 +78,11 @@ public class FootStepSound : MonoBehaviour
             }
 
 
-            if (anim.GetCurrentAnimatorStateInfo(0).IsName("HumanoidWalk"))
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("HumanoidWalk") || player.isWalking && !player.isRunning)
             {
                 stepDelay = walkDelay;
             }
-            else if (anim.GetCurrentAnimatorStateInfo(0).IsName("HumanoidRun"))
+            else if (anim.GetCurrentAnimatorStateInfo(0).IsName("HumanoidRun") || player.isRunning)
             {
                stepDelay = runDelay;
             }

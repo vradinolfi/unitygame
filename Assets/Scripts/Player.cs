@@ -13,7 +13,10 @@ public class Player : MonoBehaviour
     public float gravity = 20f;
     public float rayDistance = 4f;
     public float maxHealth;
+    public float curSpeed;
+    public float animSpeed;
     [Space]
+    public bool isWalking = false;
     public bool isRunning = false;
     public float poisonRate;
     public bool isPoisoned;
@@ -34,13 +37,13 @@ public class Player : MonoBehaviour
     private Ray ray;
 
     Item item;
-    Animator anim;                      // Reference to the animator component.
+    public Animator anim;                      // Reference to the animator component.
     //Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
     CharacterController playerController;
     CapsuleCollider[] colliders;
     CapsuleCollider playerCollider;
     int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
-
+    GameObject girl;
     //private GameObject enemy;
     private Enemy enemyScript;
 
@@ -49,8 +52,9 @@ public class Player : MonoBehaviour
         // Create a layer mask for the floor layer.
         floorMask = LayerMask.GetMask("Floor");
 
+        girl = GameObject.Find("/Player/girl2@Idle2");
         // Set up references.
-        anim = GetComponent<Animator>();
+        anim = girl.GetComponent<Animator>();
         playerController = GetComponent<CharacterController>();
         colliders = GetComponents<CapsuleCollider>();
     }
@@ -235,15 +239,37 @@ public class Player : MonoBehaviour
         bool walking = h != 0f || v > 0f;
         bool walkingBackwards = h != 0f || v < 0f;
 
+
+        isWalking = walking;
         // Tell the animator whether or not the player is walking.
         if (isAiming)
         {
             walking = false;
+            animSpeed = 0f;
         }
 
-        anim.SetBool("IsWalking", walking);
+        if (walking)
+        {
+            animSpeed = 0.25f;
+        }
+
+        if (isRunning)
+        {
+            animSpeed = 1f;
+        }
+
+        if (!isRunning && !walking)
+        {
+            animSpeed = 0f;
+        }
+
+        curSpeed = Mathf.Lerp(curSpeed, animSpeed, runSpeed * Time.deltaTime);
+
+        anim.SetFloat("Speed", curSpeed);
+
+        //anim.SetBool("IsWalking", walking);
         //anim.SetBool("IsWalkingBackwards", walkingBackwards);
-        anim.SetBool("IsRunning", isRunning);
+        //anim.SetBool("IsRunning", isRunning);
     }
 
 

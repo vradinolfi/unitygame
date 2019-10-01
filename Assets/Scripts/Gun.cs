@@ -8,13 +8,14 @@ public class Gun : MonoBehaviour
     public float range = 200f;
     public float fireRate = 15f;
 
-    private float nextTimeToFire = 0f;
+    public float nextTimeToFire = 0f;
 
     public int maxAmmo = 15;
     public int currentAmmo;
     private int availableAmmo;
     public float reloadTime = 1f;
     private bool isReloading = false;
+    private bool isFiring = false;
 
     public bool equipPistol;
 
@@ -40,7 +41,7 @@ public class Gun : MonoBehaviour
     {
 
         playerController = player.GetComponent<CharacterController>();
-        anim = player.GetComponent<Animator>();
+        anim = player.anim.GetComponent<Animator>();
 
         //currentAmmo = maxAmmo;
     }
@@ -76,12 +77,12 @@ public class Gun : MonoBehaviour
             if (Input.GetButton("Aim"))
             {
                 Aim();
-                anim.SetBool("IsAiming", true);
+                anim.SetBool("isAiming", true);
                 player.isAiming = true;
             }
             else
             {
-                anim.SetBool("IsAiming", false);
+                anim.SetBool("isAiming", false);
                 player.isAiming = false;
             }
 
@@ -90,9 +91,9 @@ public class Gun : MonoBehaviour
                 return;
             }
 
-            if (Input.GetButton("Aim") && Input.GetButtonDown("Submit") && Time.time >= nextTimeToFire)
+            if (Input.GetButton("Aim") && Input.GetButtonDown("Submit") && !isFiring)
             {
-                nextTimeToFire = Time.time + 1f / fireRate;
+                //nextTimeToFire = Time.time + 1f / fireRate;                 && Time.time >= nextTimeToFire
                 Shoot();
             }
 
@@ -128,6 +129,7 @@ public class Gun : MonoBehaviour
         {
             if (availableAmmo > 0)
             {
+                StopAllCoroutines();
                 StartCoroutine(Reload());
                 return;
             }
@@ -143,49 +145,62 @@ public class Gun : MonoBehaviour
         if (currentAmmo > 0)
         {
 
-            currentAmmo--;
-
-            muzzleFlash.Play();
-
-            int rand = Random.Range(0, 3);
-            if (rand == 0)
-            {
-                currentClip = shotSound1;
-            }
-            else if (rand == 1)
-            {
-                currentClip = shotSound2;
-            }
-            else if (rand == 2)
-            {
-                currentClip = shotSound3;
-            }
-            else if (rand == 3)
-            {
-                currentClip = shotSound4;
-            }
-
-            shotSound.clip = currentClip;
-
-            shotSound.Play();
-
-            if (Physics.Raycast(player.transform.position + new Vector3(0f, playerController.center.y, 0f), player.transform.forward, out hit, range))
-            {
-                //Debug.Log(hit.transform.name);
-
-                Enemy enemy = hit.transform.GetComponent<Enemy>();
-
-                if (enemy != null)
-                {
-                    enemy.TakeDamage(damage);
-                }
-            }
+            StopAllCoroutines();
+            StartCoroutine(Fire());
 
         }
 
         Debug.Log(currentAmmo);
         Debug.Log(availableAmmo);
 
+    }
+
+    IEnumerator Fire()
+    {
+        currentAmmo--;
+
+        muzzleFlash.Play();
+        anim.SetBool("pistolShot", true);
+        isFiring = true;
+
+        int rand = Random.Range(0, 3);
+        if (rand == 0)
+        {
+            currentClip = shotSound1;
+        }
+        else if (rand == 1)
+        {
+            currentClip = shotSound2;
+        }
+        else if (rand == 2)
+        {
+            currentClip = shotSound3;
+        }
+        else if (rand == 3)
+        {
+            currentClip = shotSound4;
+        }
+
+        shotSound.clip = currentClip;
+
+        shotSound.Play();
+
+        if (Physics.Raycast(player.transform.position + new Vector3(0f, playerController.center.y, 0f), player.transform.forward, out hit, range))
+        {
+            //Debug.Log(hit.transform.name);
+
+            Enemy enemy = hit.transform.GetComponent<Enemy>();
+
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+            }
+        }
+
+        yield return new WaitForSeconds(nextTimeToFire);
+
+        anim.SetBool("pistolShot", false);
+        isFiring = false;
     }
 
     IEnumerator Reload()
