@@ -99,15 +99,15 @@ public class Gun : MonoBehaviour
 
         }
 
-        //ray = new Ray(player.transform.position + new Vector3(0f, playerCollider.center.y, 0f), player.transform.forward);
+        ray = new Ray(player.transform.position + new Vector3(0f, player.GetComponent<CharacterController>().center.y, 0f), player.transform.forward);
 
-        //Debug.DrawRay(ray.origin, ray.direction * range, Color.red); // make sure gizmos are toggled on in viewport
+        Debug.DrawRay(ray.origin, ray.direction * range, Color.red); // make sure gizmos are toggled on in viewport
 
     }
 
     void Aim()
     {
-        if (Physics.Raycast(player.transform.position + new Vector3(0f, playerController.center.y, 0f), player.transform.forward, out hit, range))
+        if (Physics.Raycast(player.transform.position + new Vector3(0f, player.GetComponent<CharacterController>().center.y, 0f), player.transform.forward, out hit, range))
         {
             if (hit.collider.gameObject.tag == "Enemy")
             {

@@ -27,12 +27,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerStay(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             player = collision.gameObject.GetComponent<Player>();
-
+            Debug.Log("hit player collider");
             if (!isAttacking)
             {
                 StartCoroutine(Attack());
@@ -42,6 +42,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator Attack()
     {
+        Debug.Log("attacking");
         player.health -= attackDamage;
         print(player.health);
         isAttacking = true;
@@ -60,4 +61,5 @@ public class Enemy : MonoBehaviour
         this.gameObject.SetActive(false);
         print("Enemy died.");
     }
+
 }

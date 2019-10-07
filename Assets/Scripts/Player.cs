@@ -176,6 +176,7 @@ public class Player : MonoBehaviour
             inventory.Load();
         }
 
+        //Debug.Log(health);
     }
 
     private void OnCollisionEnter(Collision collision)
