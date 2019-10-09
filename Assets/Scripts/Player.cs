@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
 
     public float health;
 
+    public bool isIndoors;
+
     private bool dead;
     private RaycastHit hit;
     private Ray ray;
