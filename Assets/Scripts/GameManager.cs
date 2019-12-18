@@ -11,9 +11,11 @@ public class GameManager : MonoBehaviour
     {
 
         // stops console warning about multiple audio listeners but i could see it causing issues later on maybe
-        foreach (Camera camera in Camera.allCameras)
+        foreach (Camera cam in Camera.allCameras)
         {
-            camera.GetComponent<AudioListener>().enabled = false;
+            cam.GetComponent<AudioListener>().enabled = false;
+
+            Debug.Log(cam.gameObject.name);
         }
 
     }

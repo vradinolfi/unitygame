@@ -7,6 +7,7 @@ public class CameraFollow : MonoBehaviour
     public Transform target;
     public Vector3 offset;
     public float smoothSpeed = 1f;
+    public Vector3 desiredPosition;
 
     void OnEnable()
     {
@@ -15,18 +16,33 @@ public class CameraFollow : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 desiredPosition = target.position + offset;
-        //Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+        //if (this.gameObject.GetComponent<Camera>().enabled)
+        //{
+            /*
+            RaycastHit hit;
 
-        Vector3 smoothedPosition = cubeBezier3(
-            transform.position, 
-            transform.position,
-            desiredPosition,
-            desiredPosition,
-            smoothSpeed * Time.deltaTime
-            );
+            if (Physics.Linecast(target.position, transform.position, out hit))
+            {
+                Debug.Log("blocked");
+                desiredPosition = hit.point;
+            }
+            else
+            {*/
+                desiredPosition = target.position + offset;
+                //Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+            //}
 
-        transform.position = smoothedPosition;
+            Vector3 smoothedPosition = cubeBezier3(
+                transform.position,
+                transform.position,
+                desiredPosition,
+                desiredPosition,
+                smoothSpeed * Time.deltaTime
+                );
+
+            transform.position = smoothedPosition;
+        //}
+
     }
 
     public static Vector3 cubeBezier3(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
