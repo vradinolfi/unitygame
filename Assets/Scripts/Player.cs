@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     public float poisonRate;
     public bool isPoisoned;
     public bool isAiming = false;
+    public bool isPushing = false;
 
     public bool gamePaused = false;
     [Space]
@@ -137,6 +138,18 @@ public class Player : MonoBehaviour
         if (isPoisoned && !dead)
         {
             health -= poisonRate * Time.deltaTime;
+        }
+        //Debug.Log(transform.rotation.y);
+        if (isPushing && movingForward)
+        {
+            anim.SetBool("isPushing", true);
+
+            //nearestAngle = ((int)(rotation + 45) / 90) * 90;
+            //transform.rotation = Quaternion.Euler(0, 0, nearestAngle);
+        }
+        else
+        {
+            anim.SetBool("isPushing", false);
         }
 
     }

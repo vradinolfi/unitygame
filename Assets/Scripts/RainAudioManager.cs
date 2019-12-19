@@ -52,7 +52,7 @@ public class RainAudioManager : MonoBehaviour
         while (audioSource.volume > 0)
         {
             audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
-            Debug.Log(audioSource.volume);
+            //Debug.Log(audioSource.volume);
             yield return null;
         }
 
@@ -63,7 +63,7 @@ public class RainAudioManager : MonoBehaviour
         while (audioSource.volume < startVolume)
         {
             audioSource.volume += audioSource.volume * Time.deltaTime / FadeTime;
-            Debug.Log(audioSource.volume);
+            //Debug.Log(audioSource.volume);
             yield return null;
         }
 

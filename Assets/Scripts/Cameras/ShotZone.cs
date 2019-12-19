@@ -15,11 +15,11 @@ public class ShotZone : MonoBehaviour
         {
             //targetShot.CutToShot();
 
-            foreach(Camera camera in Camera.allCameras)
+            foreach(Camera cam in Camera.allCameras)
             {
                 //camera.transform.gameObject.SetActive(false);
-                camera.enabled = false;
-                camera.GetComponent<AudioListener>().enabled = false;
+                cam.enabled = false;
+                cam.GetComponent<AudioListener>().enabled = false;
             }
 
             //targetCamera.transform.gameObject.SetActive(true);

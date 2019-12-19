@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
         {
             cam.GetComponent<AudioListener>().enabled = false;
 
-            Debug.Log(cam.gameObject.name);
+            //Debug.Log(cam.gameObject.name);
         }
 
     }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Item
   - Enemy
+  - Pushable
   layers:
   - Default
   - TransparentFX
