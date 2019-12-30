@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject inventoryUI;
     public InventoryObject inventory;
+    public GameObject youDied;
 
     [Space]
 
@@ -66,6 +67,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         health = maxHealth;
+        dead = false;
         //Cursor.visible = false;
         //Cursor.lockState = CursorLockMode.Locked;
     }
@@ -125,7 +127,10 @@ public class Player : MonoBehaviour
         }
 
         // Move the player around the scene.
-        Move(h, v);
+        if (!dead)
+        {
+            Move(h, v);
+        }
 
         // Animate the player.
         Animating(h, v);
@@ -144,12 +149,21 @@ public class Player : MonoBehaviour
         {
             anim.SetBool("isPushing", true);
 
-            //nearestAngle = ((int)(rotation + 45) / 90) * 90;
-            //transform.rotation = Quaternion.Euler(0, 0, nearestAngle);
+            Vector3 alignedForward = NearestWorldAxis(transform.forward);
+            Vector3 alignedUp = NearestWorldAxis(transform.up);
+            transform.rotation = Quaternion.LookRotation(alignedForward, alignedUp);
         }
         else
         {
             anim.SetBool("isPushing", false);
+        }
+
+        if (movingBackward)
+        {
+            anim.SetBool("isWalkingBackwards", true);
+        } else
+        {
+            anim.SetBool("isWalkingBackwards", false);
         }
 
     }
@@ -314,6 +328,35 @@ public class Player : MonoBehaviour
     public void Die()
     {
         dead = true;
+        this.GetComponentInChildren<Projector>().enabled = false;
         print("You died.");
+        anim.SetBool("isDead", true);
+
+        youDied.SetActive(true);
+        youDied.GetComponent<Animation>().Play();
+        //GameObject darkBG = youDied.transform.Find("DarkBG").gameObject;
+
+        
+    }
+
+    private static Vector3 NearestWorldAxis(Vector3 v)
+    {
+        if (Mathf.Abs(v.x) < Mathf.Abs(v.y))
+        {
+            v.x = 0;
+            if (Mathf.Abs(v.y) < Mathf.Abs(v.z))
+                v.y = 0;
+            else
+                v.z = 0;
+        }
+        else
+        {
+            v.y = 0;
+            if (Mathf.Abs(v.x) < Mathf.Abs(v.z))
+                v.x = 0;
+            else
+                v.z = 0;
+        }
+        return v;
     }
 }

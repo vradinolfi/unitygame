@@ -6,23 +6,18 @@ using TMPro;
 public class ReadNote : MonoBehaviour
 {
 
-    [TextArea(3,10)]
-    public string text;
+    public GameManager gameManager;
     public GameObject noteView;
     public GameObject note;
     public AudioSource pageflip;
 
-    private TextMeshProUGUI noteText;
     private bool isInRange;
-    private bool gamePaused = false;
 
     Player player;
 
     // Start is called before the first frame update
     void Start()
     {
-        noteText = noteView.GetComponent<TextMeshProUGUI>();
-
         player = FindObjectOfType<Player>();
     }
 
@@ -36,15 +31,13 @@ public class ReadNote : MonoBehaviour
         }
     }
 
-    private void Inspect()
+    public void Inspect()
     {
-        if (isInRange && !gamePaused)
+        if (isInRange && !gameManager.gamePaused)
         {
-
-            noteText.text = text;
+            noteView.SetActive(true);
             note.SetActive(true);
-            Time.timeScale = 0;
-            gamePaused = true;
+            gameManager.PauseGame();
             pageflip.Play();
 
         }
@@ -53,12 +46,18 @@ public class ReadNote : MonoBehaviour
             if (isInRange)
             {
 
-                Time.timeScale = 1f;
-                gamePaused = false;
+                gameManager.UnpauseGame();
                 note.SetActive(false);
+                noteView.SetActive(false);
+                note.GetComponent<BookController>().ResetBook();
 
             }
         }
+    }
+
+    public void PlayFlip()
+    {
+        pageflip.Play();
     }
 
     private void OnTriggerEnter(Collider other)

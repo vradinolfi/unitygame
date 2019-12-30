@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
 
     public bool gamePaused = false;
+    public bool playerBusy = false;
     
     void Start()
     {

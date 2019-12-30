@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public float restTime = 5f;
     public bool dead = false;
 
-    private bool isAttacking = false;
+    public bool isAttacking = false;
     private Player player;
 
     // Start is called before the first frame update
@@ -32,7 +32,9 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             player = collision.gameObject.GetComponent<Player>();
+
             Debug.Log("hit player collider");
+
             if (!isAttacking)
             {
                 StartCoroutine(Attack());

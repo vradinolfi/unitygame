@@ -9,6 +9,8 @@ public class CameraFollow : MonoBehaviour
     public float smoothSpeed = 1f;
     public Vector3 desiredPosition;
 
+    public float distance;
+
     void OnEnable()
     {
         transform.position = target.position + offset;
@@ -16,23 +18,18 @@ public class CameraFollow : MonoBehaviour
 
     void FixedUpdate()
     {
-        //if (this.gameObject.GetComponent<Camera>().enabled)
-        //{
-            /*
-            RaycastHit hit;
 
-            if (Physics.Linecast(target.position, transform.position, out hit))
-            {
-                Debug.Log("blocked");
-                desiredPosition = hit.point;
-            }
-            else
-            {*/
-                desiredPosition = target.position + offset;
-                //Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
-            //}
+        desiredPosition = target.position + offset;
 
-            Vector3 smoothedPosition = cubeBezier3(
+        RaycastHit hit;
+
+        if (Physics.Linecast(target.position, desiredPosition, out hit))
+        {
+            desiredPosition.x = hit.point.x - .1f;
+            desiredPosition.z = hit.point.z - .1f;
+        }
+
+        Vector3 smoothedPosition = cubeBezier3(
                 transform.position,
                 transform.position,
                 desiredPosition,
@@ -40,8 +37,7 @@ public class CameraFollow : MonoBehaviour
                 smoothSpeed * Time.deltaTime
                 );
 
-            transform.position = smoothedPosition;
-        //}
+        transform.position = smoothedPosition;
 
     }
 
