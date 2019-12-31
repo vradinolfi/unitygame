@@ -1,5 +1,5 @@
 // GENERATED AUTOMATICALLY FROM 'Assets/PlayerControls.inputactions'
-
+/*
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
@@ -245,3 +245,4 @@ public class PlayerControls : IInputActionCollection
         void OnRun(InputAction.CallbackContext context);
     }
 }
+*/

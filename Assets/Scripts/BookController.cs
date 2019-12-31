@@ -54,6 +54,21 @@ public class BookController : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        /*GameObject[] pages = new GameObject[numPages];
+
+        for (int i = 0; i < numPages; i++)
+        {
+            pages[i] = book.GetChild(i).gameObject;
+        }*/
+        //print(currentPage);
+        //print(pages[currentPage]);
+        //pages[currentPage].GetComponent<Animation>().Play("PageSlideInLeft");
+        //book.GetChild(0).gameObject.GetComponent<Animation>().Play("PageSlideInLeft");
+
+    }
+
     public void NextPage()
     {
         GameObject[] pages = new GameObject[numPages];
