@@ -12,10 +12,13 @@ public class Enemy : MonoBehaviour
     public bool isAttacking = false;
     private Player player;
 
+    public Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
         //player = FindObjectOfType<Player>();
+        anim = this.transform.Find("girlEnemy").gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -29,7 +32,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerStay(Collider collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && !dead)
         {
             player = collision.gameObject.GetComponent<Player>();
 
@@ -38,6 +41,7 @@ public class Enemy : MonoBehaviour
             if (!isAttacking)
             {
                 StartCoroutine(Attack());
+
             }
         }
     }
@@ -48,7 +52,9 @@ public class Enemy : MonoBehaviour
         player.health -= attackDamage;
         print(player.health);
         isAttacking = true;
+        anim.SetBool("isAttacking", true);
         yield return new WaitForSeconds(restTime);
+        anim.SetBool("isAttacking", false);
         isAttacking = false;
     }
 
@@ -60,8 +66,9 @@ public class Enemy : MonoBehaviour
     public void Die()
     {
         dead = true;
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
         print("Enemy died.");
+        anim.SetBool("isDead", true);
     }
 
 }

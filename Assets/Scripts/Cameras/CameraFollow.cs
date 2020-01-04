@@ -11,6 +11,8 @@ public class CameraFollow : MonoBehaviour
 
     public float distance;
 
+    public bool enableCollision;
+
     void OnEnable()
     {
         transform.position = target.position + offset;
@@ -21,12 +23,15 @@ public class CameraFollow : MonoBehaviour
 
         desiredPosition = target.position + offset;
 
-        RaycastHit hit;
-
-        if (Physics.Linecast(target.position, desiredPosition, out hit))
+        if (enableCollision)
         {
-            desiredPosition.x = hit.point.x - .1f;
-            desiredPosition.z = hit.point.z - .1f;
+            RaycastHit hit;
+
+            if (Physics.Linecast(target.position, desiredPosition, out hit))
+            {
+                desiredPosition.x = hit.point.x - .1f;
+                desiredPosition.z = hit.point.z - .1f;
+            }
         }
 
         Vector3 smoothedPosition = cubeBezier3(
