@@ -59,4 +59,4 @@ sysinfo.txt
 crashlytics-build.properties
 
 
-*.asset
+/[Aa]ssets/Scenes/*/LightingData.asset
